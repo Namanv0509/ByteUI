@@ -8,17 +8,13 @@ const geist = Geist({ subsets: ["latin"] });
 const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'ComponentHub - Premium UI Components Library',
+  title: 'ByteUI - Premium UI Components Library',
   description: 'A curated library of unique and animated UI components with cool animations, morphing shapes, and gradient effects',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 

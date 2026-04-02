@@ -10,7 +10,6 @@ import Link from 'next/link'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import {
-  PulseButton,
   MorphCard,
   GradientText,
   RippleButton,
@@ -49,10 +48,8 @@ import {
 } from '@/components/component-previews'
 
 const componentPreviewMap: { [key: string]: React.ReactNode } = {
-  'pulse-button': <PulseButton />,
   'morph-card': <MorphCard />,
   'gradient-text': <GradientText />,
-  'ripple-button': <RippleButton />,
   'floating-card': <FloatingCard />,
   'glass-button': <GlassButton />,
   'shimmer-text': <ShimmerText />,
@@ -78,6 +75,7 @@ const componentPreviewMap: { [key: string]: React.ReactNode } = {
   'magic-navbar': <MagicNavbar />,
   'sidebar-menu': <SidebarMenu />,
   'circular-menu': <CircularMenu />,
+  'ripple-button': <RippleButton />,
   'tooltip-menu': <TooltipMenu />,
   'pulsing-badge': <PulsingBadge />,
   'glowing-tag': <GlowingTag />,

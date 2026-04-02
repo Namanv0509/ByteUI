@@ -45,7 +45,7 @@ export default function Home() {
                 Premium UI Components
               </h1>
               <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-                Discover unique, animated components that stand out. Beautiful micro-interactions, morphing shapes, and gradient effects ready to copy and use.
+                Discover a library of  animated components that stand out. Beautiful micro-interactions, morphing shapes, and gradient effects ready to copy and use.
               </p>
             </motion.div>
 
@@ -82,7 +82,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Choose ComponentHub?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Choose ByteUI?</h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Hand-crafted components that go beyond the ordinary
           </p>

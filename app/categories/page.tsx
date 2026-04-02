@@ -8,7 +8,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import {
-  PulseButton,
   MorphCard,
   GradientText,
   RippleButton,
@@ -47,10 +46,8 @@ import {
 } from '@/components/component-previews'
 
 const componentPreviewMap: { [key: string]: React.ReactNode } = {
-  'pulse-button': <PulseButton />,
   'morph-card': <MorphCard />,
   'gradient-text': <GradientText />,
-  'ripple-button': <RippleButton />,
   'floating-card': <FloatingCard />,
   'glass-button': <GlassButton />,
   'shimmer-text': <ShimmerText />,
@@ -67,6 +64,7 @@ const componentPreviewMap: { [key: string]: React.ReactNode } = {
   'tilt-card': <TiltCard />,
   'swipe-button': <SwipeButton />,
   'download-button': <DownloadButton />,
+  'ripple-button': <RippleButton />,
   'glow-button': <GlowButton />,
   'glitch-button': <GlitchButton />,
   'spinner-loader': <SpinnerLoader />,

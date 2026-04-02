@@ -10,7 +10,6 @@ import Link from 'next/link'
 import { Search, Filter } from 'lucide-react'
 
 import {
-  PulseButton,
   MorphCard,
   GradientText,
   RippleButton,
@@ -49,10 +48,8 @@ import {
 } from '@/components/component-previews'
 
 const componentPreviewMap: { [key: string]: React.ReactNode } = {
-  'pulse-button': <PulseButton />,
   'morph-card': <MorphCard />,
   'gradient-text': <GradientText />,
-  'ripple-button': <RippleButton />,
   'floating-card': <FloatingCard />,
   'glass-button': <GlassButton />,
   'shimmer-text': <ShimmerText />,
@@ -79,6 +76,7 @@ const componentPreviewMap: { [key: string]: React.ReactNode } = {
   'sidebar-menu': <SidebarMenu />,
   'circular-menu': <CircularMenu />,
   'tooltip-menu': <TooltipMenu />,
+  'ripple-button': <RippleButton />,
   'pulsing-badge': <PulsingBadge />,
   'glowing-tag': <GlowingTag />,
   'gradient-border-badge': <GradientBorderBadge />,

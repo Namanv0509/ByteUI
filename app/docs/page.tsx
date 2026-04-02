@@ -11,7 +11,7 @@ export default function DocsPage() {
       id: 'getting-started',
       title: 'Getting Started',
       content: `
-        Welcome to ComponentHub! This guide will help you get started with our collection of premium UI components.
+        Welcome to ByteUI! This guide will help you get started with our collection of premium UI components.
         
         Our components are built with modern technologies:
         • React 18+ for component architecture
@@ -24,7 +24,7 @@ export default function DocsPage() {
       id: 'installation',
       title: 'Installation & Setup',
       content: `
-        To use ComponentHub components in your project, you need to have the following installed:
+        To use ByteUI components in your project, you need to have the following installed:
 
         1. Create a React project (if you don't have one):
            npx create-next-app@latest my-app
@@ -138,7 +138,7 @@ export default function DocsPage() {
       id: 'best-practices',
       title: 'Best Practices',
       content: `
-        Here are some best practices when using ComponentHub components:
+        Here are some best practices when using ByteUI components:
 
         1. Performance
         - Use 'use client' directive for client-side components
@@ -211,7 +211,7 @@ export default function DocsPage() {
         5. Wait for review and feedback
 
         Benefits:
-        - Your component featured on ComponentHub
+        - Your component featured on ByteUI
         - Credit and attribution
         - Help the community with great components
         - Build your portfolio
@@ -233,7 +233,7 @@ export default function DocsPage() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-4">Documentation</h1>
-          <p className="text-xl text-foreground/60">Learn how to use ComponentHub components in your projects</p>
+          <p className="text-xl text-foreground/60">Learn how to use ByteUI components in your projects</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export function Footer() {
@@ -18,10 +19,10 @@ export function Footer() {
           {/* Brand */}
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-sm">
-                C
+              <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white">
+                <Image src="/android-chrome-192x192.png" alt="ByteUI Logo" width={32} height={32} />
               </div>
-              <span className="font-bold">ComponentHub</span>
+              <span className="font-bold">ByteUI</span>
             </div>
             <p className="text-foreground/60 text-sm">
               Premium UI components with unique animations and smooth interactions.
@@ -63,22 +64,6 @@ export function Footer() {
               </li>
             </ul>
           </motion.div>
-        </div>
-
-        {/* Bottom */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-foreground/60 text-sm">© 2025 ComponentHub. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="text-foreground/60 hover:text-foreground transition-colors text-sm">
-              Privacy
-            </a>
-            <a href="#" className="text-foreground/60 hover:text-foreground transition-colors text-sm">
-              Terms
-            </a>
-            <a href="#" className="text-foreground/60 hover:text-foreground transition-colors text-sm">
-              Contact
-            </a>
-          </div>
         </div>
       </div>
     </footer>

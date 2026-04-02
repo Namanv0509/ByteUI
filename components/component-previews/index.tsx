@@ -2,30 +2,9 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-// Pulse Button
-export function PulseButton() {
-const [isHovered, setIsHovered] = useState(false)
-return (
-<motion.button
-onMouseEnter={() => setIsHovered(true)}
-onMouseLeave={() => setIsHovered(false)}
-className="px-8 py-3 bg-yellow-500 dark:bg-yellow-600 text-black rounded-full font-semibold relative overflow-hidden"
-whileHover={{ scale: 1.05 }}
-whileTap={{ scale: 0.95 }}
->
-{isHovered && (
-<motion.div
-className="absolute inset-0 bg-black/10"
-initial={{ opacity: 0 }}
-animate={{ opacity: 1 }}
-exit={{ opacity: 0 }}
-transition={{ duration: 0.3 }}
-/>
-      )}
-<span className="relative z-10">Hover Me</span>
-</motion.button>
-  )
-}
+import styled from 'styled-components';
+
+
 // Morph Card
 export function MorphCard() {
 return (
@@ -96,22 +75,111 @@ transition={{ duration: 0.6 }}
 }
 // Floating Card
 export function FloatingCard() {
-return (
-<motion.div
-className="w-56 h-56 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-2xl shadow-2xl"
-animate={{ y: [0, -20, 0] }}
-transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(16, 185, 129, 0.4)' }}
->
-<div className="w-full h-full flex items-center justify-center">
-<div className="text-white text-center">
-<p className="text-sm opacity-80">Floating Card</p>
-<p className="text-2xl font-bold">Hover Me</p>
-</div>
-</div>
-</motion.div>
-  )
+  return (
+    <StyledWrapper>
+      <div className="container-items">
+        <button className="item-color" style={{ '--color': '#e11d48' } as React.CSSProperties} aria-color="#e11d48" />
+        <button className="item-color" style={{ '--color': '#f472b6' } as React.CSSProperties} aria-color="#f472b6" />
+        <button className="item-color" style={{ '--color': '#fb923c' } as React.CSSProperties} aria-color="#fb923c" />
+        <button className="item-color" style={{ '--color': '#facc15' } as React.CSSProperties} aria-color="#facc15" />
+        <button className="item-color" style={{ '--color': '#84cc16' } as React.CSSProperties} aria-color="#84cc16" />
+        <button className="item-color" style={{ '--color': '#10b981' } as React.CSSProperties} aria-color="#10b981" />
+        <button className="item-color" style={{ '--color': '#0ea5e9' } as React.CSSProperties} aria-color="#0ea5e9" />
+        <button className="item-color" style={{ '--color': '#3b82f6' } as React.CSSProperties} aria-color="#3b82f6" />
+        <button className="item-color" style={{ '--color': '#8b5cf6' } as React.CSSProperties} aria-color="#8b5cf6" />
+        <button className="item-color" style={{ '--color': '#a78bfa' } as React.CSSProperties} aria-color="#a78bfa" />
+      </div>
+    </StyledWrapper>
+  );
 }
+
+const StyledWrapper = styled.div`
+  .container-items {
+    display: flex;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+  }
+
+  .item-color {
+    position: relative;
+    flex-shrink: 0;
+    width: 32px;
+    height: 40px;
+    border: none;
+    outline: none;
+    transition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: "";
+      inset: 0;
+      width: 40px;
+      height: 40px;
+      background-color: var(--color);
+      border-radius: 6px;
+      transform: scale(1.2);
+      pointer-events: none;
+      transition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    &::before {
+      position: absolute;
+      content: attr(aria-color);
+      left: 65%;
+      bottom: 52px;
+      font-size: 8px;
+      line-height: 12px;
+      transform: translateX(-50%);
+      padding: 2px 0.25rem;
+      background-color: #000000;
+      color: #ffffff;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    &:hover {
+      transform: scale(1.5);
+      z-index: 99999;
+
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &:active::after {
+      transform: scale(1.1);
+    }
+
+    &:focus::before {
+      content: "✅Copy";
+    }
+  }
+
+  .item-color:hover + * {
+    transform: scale(1.3);
+    z-index: 9999;
+  }
+
+  .item-color:hover + * + * {
+    transform: scale(1.15);
+    z-index: 999;
+  }
+
+  .item-color:has(+ *:hover) {
+    transform: scale(1.3);
+    z-index: 9999;
+  }
+
+  .item-color:has(+ * + *:hover) {
+    transform: scale(1.15);
+    z-index: 999;
+  }
+`;;
 // Glass Button
 export function GlassButton() {
 return (

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -28,13 +29,13 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <motion.div
-              className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold"
+              className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white"
               whileHover={{ scale: 1.05, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
-              C
+              <Image src="/android-chrome-192x192.png" alt="ByteUI Logo" width={32} height={32} />
             </motion.div>
-            <span className="font-bold text-lg group-hover:text-primary transition-colors">ComponentHub</span>
+            <span className="font-bold text-lg group-hover:text-primary transition-colors">ByteUI</span>
           </Link>
 
           {/* Nav Items */}
