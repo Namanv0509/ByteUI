@@ -2,6 +2,8 @@
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { ReactNode } from 'react'
+import { Provider } from 'react-redux'
+import { store } from '@/lib/store'
 
 export function ThemeProvider({
   children,
@@ -11,8 +13,10 @@ export function ThemeProvider({
   [key: string]: any
 }) {
   return (
-    <NextThemesProvider {...props}>
-      {children}
-    </NextThemesProvider>
+    <Provider store={store}>
+      <NextThemesProvider {...props}>
+        {children}
+      </NextThemesProvider>
+    </Provider>
   )
 }
