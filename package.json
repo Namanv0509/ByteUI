@@ -9,9 +9,13 @@
     "lint": "eslint .",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "bundle": "webpack --config webpack.config.js"
+    "bundle": "webpack --config webpack.config.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fontsource/lexend": "^5.2.11",
+    "@fontsource/public-sans": "^5.2.7",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "1.2.12",
     "@radix-ui/react-alert-dialog": "1.1.15",
@@ -69,6 +73,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@storybook/addon-styling-webpack": "^3.0.2",
+    "@storybook/nextjs-vite": "^10.4.0",
     "@tailwindcss/postcss": "^4.2.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -82,11 +88,13 @@
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "postcss": "^8.5",
+    "storybook": "^10.4.0",
     "tailwindcss": "^4.2.0",
     "ts-jest": "^29.4.9",
     "ts-loader": "^9.5.7",
     "tw-animate-css": "1.3.3",
     "typescript": "5.7.3",
+    "vite": "^8.0.13",
     "webpack": "^5.106.2",
     "webpack-cli": "^7.0.2"
   }

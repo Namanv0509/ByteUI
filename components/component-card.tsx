@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
-import { ComponentItem } from '@/lib/components-data'
+import type { GalleryComponent } from '@/lib/gallery/types'
 
 interface ComponentCardProps {
-  component: ComponentItem
+  component: GalleryComponent
   preview?: React.ReactNode
 }
 
@@ -20,6 +20,8 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  const href = `/component/${component.sectionId}/${component.slug}`
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -28,12 +30,11 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
       transition={{ duration: 0.5 }}
       className="group relative h-full"
     >
-      <Link href={`/component/${component.id}`}>
+      <Link href={href}>
         <motion.div
           className="h-full bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-colors"
           whileHover={{ y: -8 }}
         >
-          {/* Preview Section */}
           <div className="h-48 bg-gradient-to-br from-muted/50 to-muted flex items-center justify-center overflow-hidden relative">
             {preview && (
               <motion.div
@@ -46,7 +47,6 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
             )}
           </div>
 
-          {/* Content Section */}
           <div className="p-6">
             <div className="mb-2 flex items-start justify-between gap-2">
               <h3 className="font-bold text-lg leading-tight group-hover:text-primary transition-colors">
@@ -58,7 +58,6 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
               {component.description}
             </p>
 
-            {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-4">
               {component.tags.slice(0, 2).map((tag) => (
                 <span
@@ -70,14 +69,13 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
               ))}
             </div>
 
-            {/* Category Badge */}
             <span className="text-xs text-muted-foreground font-medium">
-              {component.category}
+              {component.sectionTitle}
             </span>
           </div>
 
-          {/* Hover Copy Button */}
           <motion.button
+            type="button"
             onClick={(e) => {
               e.preventDefault()
               handleCopy()
