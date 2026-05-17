@@ -9,15 +9,16 @@ const StyledWrapper = styled.div`
     box-shadow: 3px 3px 0 #000000;
     font-weight: 750;
     font-size: 16px;
-    background: #FF4081;
+    background: #f76b9aff;
     transition: all 0.3s ease;
     cursor: pointer;
+    color: #000000;
   }
 
   .button:hover {
     transform: translate(1.5px, 1.5px);
     box-shadow: 1.5px 1.5px 0 #000000;
-    background: #FFD700;
+    background: #f0e68c;
   }
 
   .button:active {

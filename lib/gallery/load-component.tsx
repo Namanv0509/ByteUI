@@ -16,8 +16,6 @@ function resolveLoader(sectionId: string, slug: string): ComponentLoader | null 
   switch (sectionId) {
     case 'neo-brutalism':
       return () => import(`@/components/neo-brutalism/${slug}`)
-    case 'old-component':
-      return () => import(`@/components/old-component/${slug}`)
     // Add `new-component` here once `components/new-component/` has components.
     default:
       return null

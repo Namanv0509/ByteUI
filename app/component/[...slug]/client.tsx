@@ -53,7 +53,7 @@ export function ClientComponentDetail({
             animate={{ opacity: 1, x: 0 }}
             className="space-y-6"
           >
-            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-border p-12 flex items-center justify-center min-h-96">
+            <div className="bg-white dark:bg-slate-700 rounded-2xl border border-border p-12 flex items-center justify-center min-h-96">
               <GalleryComponentPreview
                 sectionId={component.sectionId}
                 slug={component.slug}
