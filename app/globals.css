@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@import "@fontsource/lexend/400.css";
+@import "@fontsource/public-sans";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -37,6 +40,25 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+}
+
+[data-theme="neo"] {
+  --border-width: 3px;
+  --border-width-thick: 5px;
+  --border-color: #000;
+  --border-radius: 4px;
+
+  --shadow-md: 6px 6px 0 #000;
+  --shadow-lg: 10px 10px 0 #000;
+
+  --color-bg: #A8DADC;
+  --color-surface: #7D7D7D;
+  --color-accent-2: #71aea7;
+  --color-text: #000;
+  --color-text-muted: #7D7D7D;
+
+  --font-main: 'Lexend', sans-serif;
+  --font-sans: 'Public Sans', sans-serif;
 }
 
 .dark {
