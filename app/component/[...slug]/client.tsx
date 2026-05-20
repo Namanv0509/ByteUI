@@ -8,8 +8,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Copy, Check, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { CodeBlock } from '@/components/code-block'
 
 type ClientComponentDetailProps = {
   component: GalleryComponent
@@ -112,21 +111,8 @@ export function ClientComponentDetail({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="rounded-xl overflow-hidden border border-border"
             >
-              <SyntaxHighlighter
-                language="tsx"
-                style={atomOneDark}
-                customStyle={{
-                  padding: '20px',
-                  margin: 0,
-                  fontSize: '14px',
-                  lineHeight: '1.5',
-                }}
-                wrapLines
-              >
-                {component.code}
-              </SyntaxHighlighter>
+              <CodeBlock code={component.code} language="tsx" collapsible />
             </motion.div>
 
             <motion.div

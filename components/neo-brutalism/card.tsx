@@ -3,13 +3,34 @@ import styled from 'styled-components';
 import "@fontsource/lexend/400.css";
 import "@fontsource/public-sans";
 
-const Card = () => {
+interface CardProps {
+  className?: string;
+  children?: React.ReactNode;
+  title?: string;
+  description?: string;
+  image?: string; // NEW
+}
+
+const Card = ({
+  className,
+  title = 'Summer',
+  description = 'Watermelon Sugar Rush',
+  image
+}: CardProps) => {
   return (
-    <StyledWrapper>
+    <StyledWrapper className={className}>
       <div className="card">
-        <div className="card-image" />
-        <div className="category">Summer</div>
-        <div className="heading">Watermelon Sugar Rush</div>
+
+        {/* Pass image as inline style */}
+        <div
+          className="card-image"
+          style={{
+            backgroundImage: image ? `url(${image})` : 'none',
+          }}
+        />
+
+        <div className="category">{title}</div>
+        <div className="heading">{description}</div>
       </div>
 
       {/* Decorative SVG */}
@@ -37,11 +58,12 @@ const Card = () => {
 const StyledWrapper = styled.div`
   position: relative;
   display: inline-block;
-  width: 190px;
+  width: auto;
 
   .card {
-    width: 190px;
-    background: #f76b9aff;
+    width: 100%;
+    max-width:220px;
+    background: #f76b9a;
     padding: 0.4em;
     border-radius: 15px;
     border: 3px solid #000;
@@ -52,9 +74,15 @@ const StyledWrapper = styled.div`
 
   .card-image {
     background-color: #f0e68c;
+
     width: 100%;
     height: 130px;
     border-radius: 12px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     transition: transform 0.2s ease;
 
     &:hover {
@@ -83,13 +111,12 @@ const StyledWrapper = styled.div`
     line-height: 1.2;
   }
 
-  /* Decorative SVG */
   .svg-wrapper {
     position: absolute;
     top: -80px;
     right: -90px;
     z-index: 999;
-    pointer-events: none; 
+    pointer-events: none;
     transform: scale(0.50);
   }
 `;

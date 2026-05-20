@@ -1,0 +1,27 @@
+import React from 'react';
+import Button from './button';
+import Dialog from './dialog';
+
+const AlertDialog = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const openDialog = () => setIsOpen(true);
+  const closeDialog = () => setIsOpen(false);
+
+  return (
+    <>
+      <Button onClick={openDialog}>ALERT</Button>
+
+      <Dialog
+        isOpen={isOpen}
+        onClose={closeDialog}
+        title="This is Alert Dialog"
+        description="Your action has consequences, proceed with caution."
+      >
+        {/* You can put extra content here if needed */}
+      </Dialog>
+    </>
+  );
+};
+
+export default AlertDialog;
