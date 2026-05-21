@@ -50,11 +50,11 @@ const StyledWrapper = styled.div`
         position: relative;
         border: var(--border);
         box-shadow: var(--shadow-md);
-        background: #A8DADC;
-        color: black;
+        background: var(--color-accent-2);
+        color: var(--color-text);
         font-family: var(--font-sans);
         max-width: 600px;
-        border-radius: 15px;
+        border-radius: var(--border-radius);
     }
         .dialog h2 {
             margin: 0 0 10px;

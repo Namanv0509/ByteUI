@@ -4,12 +4,14 @@ import {useState} from 'react';
 import styled from 'styled-components';
 import "@fontsource/public-sans";
 import { ArrowBigLeft,ArrowBigLeftDash, ArrowBigRight,  ArrowBigRightDash } from 'lucide-react';
+import NeoThemeWrapper from './neo.theme';
 
 const NeoBrutalismCalendar = () => {
   const [date, setDate] = useState(new Date());
 
   return (
     <StyledWrapper>
+      <NeoThemeWrapper>
     <Calendar
       value={date}
       onChange={newDate => setDate(new Date)}
@@ -19,6 +21,7 @@ const NeoBrutalismCalendar = () => {
       prev2Label={<ArrowBigLeftDash size={20}/>}
       next2Label={<ArrowBigRightDash size={20}/>}
     />
+    </NeoThemeWrapper>
     </StyledWrapper>
   );
 };
@@ -28,34 +31,29 @@ const StyledWrapper = styled.div`
 .neo-brutal-calendar {
   width: 100%;
   max-width: 380px;
-  background: #A8DADC; 
+  background: var(--color-accent-2); 
   border: 4px solid #000;
-  box-shadow: 8px 8px 0 #000; 
+  box-shadow: var(--shadow-lg-1); 
   padding: 16px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-family: 'Public Sans', system-ui, sans-serif;
-  color: #000;
+  color: var(--color-text);
+}
+.react-calendar__tile--neighboringMonth:hover {
+  background: #f5f5f5;
+  color: #999;
+  transform: none;
+  box-shadow: none;
+}
+  .react-calendar__tile--neighboringMonth:active {
+  transform: none;
 }
   .react-calendar__tile--neighboringMonth {
-  background: #f5f5f5 !important;
-  color: #999 !important;
-  border: 3px solid #ddd !important;
-  opacity: 1; /* reset opacity, we'll control it with color instead */
+  background: #f5f5f5;
+  color: #999;
+  border: 3px solid #ddd;
   cursor: not-allowed;
   font-weight: 500;
-}
-
-/* Disable hover effect on neighboring days */
-.react-calendar__tile--neighboringMonth:hover {
-  background: #f5f5f5 !important;
-  color: #999 !important;
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-/* Optional: Make them even more subtle */
-.react-calendar__tile--neighboringMonth:active {
-  transform: none !important;
 }
 
 /* Navigation (month/year header) */
@@ -66,8 +64,8 @@ const StyledWrapper = styled.div`
   padding-bottom: 12px;
 }
 .react-calendar__navigation button {
-  background: #F9C74F; 
-  border: 4px solid #000;
+  background: var(--color-accent-4); 
+  border: var(--border-width-thick) solid var(--border-color);
   space-between: 12px;
   padding: 8px 8px;
   font-weight: 700;
@@ -78,7 +76,7 @@ const StyledWrapper = styled.div`
 
 .react-calendar__navigation button:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+  box-shadow: var(--shadow-md-1);
 }
 
 /* Weekdays */
@@ -113,8 +111,8 @@ const StyledWrapper = styled.div`
 }
 
 .react-calendar__tile:hover {
-  background: #f76b9aff; 
-  color: #fff;
+  background: var(--color-accent-1); 
+  color: var(--color-text-white);
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 #000;
 }
@@ -122,9 +120,9 @@ const StyledWrapper = styled.div`
 .react-calendar__tile--active,
 .react-calendar__tile--now {
   background: #61cec1ff; 
-  color: #000;
+  color: var(--color-text);
   border: 2px solid #000;
-  box-shadow: 3px px 0 #000;
+  box-shadow:  #000;
 }
 
 /* Neighboring month days */
@@ -132,6 +130,7 @@ const StyledWrapper = styled.div`
   opacity: 0.6;
   background: #eee !important;
   color: #807a7aff !important;
+  pointer-events: none;
 
 }
   

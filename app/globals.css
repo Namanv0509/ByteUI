@@ -42,25 +42,74 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* --- LIGHT MODE --- */
 [data-theme="neo"] {
-  --border-width: 3px;
-  --border-width-thick: 5px;
-  --border-color: #000;
-  --border-radius: 4px;
 
-  --shadow-md: 6px 6px 0 #000;
-  --shadow-lg: 10px 10px 0 #000;
+  --color-accent-1: #f76a9b;
+  --shadow-lg-1: 10px 10px 0 #1e1e1e;
+  --shadow-md-1: 6px 6px 0 #1e1e1e;
 
-  --color-bg: #A8DADC;
-  --color-surface: #7D7D7D;
-  --color-accent-2: #71aea7;
-  --color-text: #000;
-  --color-text-muted: #7D7D7D;
+  --color-accent-2: #A8DADC;
+  --shadow-lg-2: 10px 10px 0 #0c2d32;
+  --shadow-md-2: 6px 6px 0 #0c2d32;
 
-  --font-main: 'Lexend', sans-serif;
+  --color-accent-3: #444444;
+  --shadow-lg-3: 10px 10px 0 #1a1a1a;
+  --shadow-md-3: 6px 6px 0 #1a1a1a;
+  
+  --color-accent-4: #F9C74F;
+  --shadow-lg-4: 10px 10px 0 #222222;
+  --shadow-md-4: 6px 6px 0 #222222;
+
+  --color-accent-5: #5294ff;
+  --shadow-lg-5: 10px 10px 0 #0a192f;
+  --shadow-md-5: 6px 6px 0 #0a192f;
+
+  --font-lexend: 'Lexend', sans-serif;
   --font-sans: 'Public Sans', sans-serif;
+  --border-width: 3px;
+  --border-width-thick: 4px;
+  --border-radius: 15px;
+
+  --color-bg: #F4F4F4;             
+  --color-surface: #FFFFFF;       
+  --color-text: #1c1c1e;
+  --color-text-white: #ffffff;
+  --color-text-muted: #585757;
+  --border-color: #000000;
 }
 
+/* --- DARK MODE --- */
+.dark [data-theme="neo"],
+[data-theme="neo"].dark {
+  --color-accent-1: #f76a9b;
+  --shadow-lg-1: 10px 10px 0 #1e1e1e;
+  --shadow-md-1: 6px 6px 0 #1e1e1e;
+
+  --color-accent-2: #A8DADC;
+  --shadow-lg-2: 10px 10px 0 #0c2d32;
+  --shadow-md-2: 6px 6px 0 #0c2d32;
+
+  --color-accent-3: #444444;
+  --shadow-lg-3: 10px 10px 0 #1a1a1a;
+  --shadow-md-3: 6px 6px 0 #1a1a1a;
+  
+  --color-accent-4: #F9C74F;
+  --shadow-lg-4: 10px 10px 0 #222222;
+  --shadow-md-4: 6px 6px 0 #222222;
+
+  --color-accent-5: #5294ff;
+  --shadow-lg-5: 10px 10px 0 #0a192f;
+  --shadow-md-5: 6px 6px 0 #0a192f;
+
+
+
+  --color-text: #1c1c1e;           
+  --color-text-muted: #A0A0A0;
+  --border-color: #000000;
+
+
+}
 .dark {
   --background: oklch(0.15 0.01 0);
   --foreground: oklch(0.92 0.02 0);

@@ -40,9 +40,9 @@ const NeoBrutalismCommandPalette = () => {
               Subscription
             </CommandItem>
 
-          <CommandGroup heading="Actions" className="neo-group">
+          <CommandGroup heading="Actions" className="neo-group margin-bottom-12">
             <CommandItem
-              className="neo-item"
+              className="neo-item neo-accent-1"
             >
               <Settings className="h-7 w-7" />
               Settings
@@ -77,12 +77,13 @@ const StyledWrapper = styled.div`
   .neo-brutal-command {
     width: 420px;
     max-width: 520px;
-    background: var(--color-bg);
+    background: var(--color-accent-2);
     border: var(--border-width-thick) solid var(--border-color);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg-2);
     font-family: var(--font-sans);
     overflow: hidden;
     margin: 10px auto;
+    border-radius: var(--border-radius);
   }
 
   .neo-header {
@@ -91,12 +92,11 @@ const StyledWrapper = styled.div`
     gap: 5px;
     border-bottom: var(--border-width-thick) solid var(--border-color);
     padding: 10px 24px;
-    background: var(--color-bg);
+    background: var(--color-accent-2);
   }
 
   .neo-input {
     flex: 1;
-    background: var(--color-bg);
     outline: none;
     border: none;
     font-size: 1.2rem;
@@ -115,7 +115,7 @@ const StyledWrapper = styled.div`
     max-height: 480px;
     overflow-y: auto;
     padding: 5px;
-    background: var(--color-bg);
+    background: var(--color-accent-2);
     color: black;
   }
 
@@ -133,7 +133,7 @@ const StyledWrapper = styled.div`
     font-size: 1.2rem;
     font-weight: 600;
     border: var(--border-width) solid var(--border-color);
-    background: var(--color-bg);
+    background: var(--color-accent-2);
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: all 0.1s ease;
@@ -141,7 +141,7 @@ const StyledWrapper = styled.div`
 
   .neo-item:hover {
     transform: translate(-3px, -3px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md-2);
   }
 
   .neo-item[aria-selected="true"] {

@@ -18,7 +18,6 @@ const AlertDialog = () => {
         title="This is Alert Dialog"
         description="Your action has consequences, proceed with caution."
       >
-        {/* You can put extra content here if needed */}
       </Dialog>
     </>
   );

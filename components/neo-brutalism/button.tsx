@@ -1,41 +1,42 @@
 'use client'
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import NeoThemeWrapper from './neo.theme';
 
 const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
   .button {
     padding: 15px 30px;
     margin-top: 10px;
-    border: 3px solid #000000;
-    box-shadow: 3px 3px 0 #000000;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-md-1);
     font-weight: 750;
     font-size: 16px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
-    color: #000000;
-    border-radius: 15px;
+    color: var(--color-text);
+    border-radius: var(--border-radius);
   }
 
   /* Primary (Default) */
   .button.primary {
-    background: #f76b9aff;
+    background: var(--color-accent-1);
 
     &:hover {
       transform: translate(1.5px, 1.5px);
-      box-shadow: 1.5px 1.5px 0 #000000;
-      background: #f0e68c;
+      box-shadow: 1.5px 1.5px 0 #1e1e1e;
+      background: var(--color-accent-4);
     }
 
     &:active {
       transform: translate(3px, 3px);
-      box-shadow: 0 0 0 #000000;
+      box-shadow: 0 0 0 #1e1e1e;
     }
   }
 
   /* Secondary */
   .button.secondary {
-    background: #ffffff;
-    color: #000000;
+    background: var(--color-accent-2);
+    color: var(--color-text);
 
     &:hover {
       transform: translate(1.5px, 1.5px);
@@ -54,7 +55,7 @@ const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
 interface Props {
   children?: React.ReactNode;
   variant?: 'primary' | 'secondary';
-  [key: string]: any; // for other button props
+  [key: string]: any; 
 }
 
 const Button: FC<Props> = ({ 
@@ -65,6 +66,7 @@ const Button: FC<Props> = ({
 }) => {
   return (
     <StyledWrapper variant={variant}>
+      <NeoThemeWrapper>
       <div className={className} {...props}>
         <button 
           className={`button ${variant}`} 
@@ -73,6 +75,7 @@ const Button: FC<Props> = ({
           {children || 'COOL'}
         </button>
       </div>
+      </NeoThemeWrapper>
     </StyledWrapper>
   );
 };
