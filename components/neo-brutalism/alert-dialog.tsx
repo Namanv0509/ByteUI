@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './button';
-import Dialog from './dialog';
+import Dialog from './_dialog';
 
 const AlertDialog = () => {
   const [isOpen, setIsOpen] = React.useState(false);

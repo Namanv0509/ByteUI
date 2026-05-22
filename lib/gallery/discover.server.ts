@@ -12,7 +12,7 @@ function formatComponentName(slug: string): string {
 }
 
 function isComponentFile(filename: string): boolean {
-  return filename.endsWith('.tsx') && !filename.includes('.stories.')
+  return filename.endsWith('.tsx') && !filename.includes('.stories.') && !filename.startsWith('_');
 }
 
 function discoverSectionComponents(

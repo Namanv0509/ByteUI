@@ -37,7 +37,7 @@ const StyledWrapper = styled.div`
   padding: 16px;
   border-radius: var(--border-radius);
   font-family: 'Public Sans', system-ui, sans-serif;
-  color: var(--color-text);
+  color: var(--color-text-black);
 }
 .react-calendar__tile--neighboringMonth:hover {
   background: #f5f5f5;

@@ -101,7 +101,7 @@ const StyledWrapper = styled.div`
 
   .heading {
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-text-black);
     padding: 7px;
     font-family: var(--font-sans);
     margin-bottom: 20px;
