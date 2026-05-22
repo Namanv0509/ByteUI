@@ -51,7 +51,7 @@ const StyledWrapper = styled.div`
         border: var(--border);
         box-shadow: var(--shadow-md);
         background: var(--color-accent-2);
-        color: var(--color-text);
+        color: var(--color-text-black);
         font-family: var(--font-sans);
         max-width: 600px;
         border-radius: var(--border-radius);

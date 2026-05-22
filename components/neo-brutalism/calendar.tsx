@@ -140,5 +140,6 @@ const StyledWrapper = styled.div`
 .react-calendar__month-view__weekdays__weekday abbr {
   text-decoration: none !important;
   border-bottom: none !important;
+  margin: 0 9px;
 }
 `

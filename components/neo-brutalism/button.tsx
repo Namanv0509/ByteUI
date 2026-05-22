@@ -13,7 +13,7 @@ const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
     font-size: 16px;
     transition: all 0.2s ease;
     cursor: pointer;
-    color: var(--color-text);
+    color: var(--color-text-black);
     border-radius: var(--border-radius);
   }
 
@@ -36,7 +36,7 @@ const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
   /* Secondary */
   .button.secondary {
     background: var(--color-accent-2);
-    color: var(--color-text);
+    color: var(--color-text-black);
 
     &:hover {
       transform: translate(1.5px, 1.5px);

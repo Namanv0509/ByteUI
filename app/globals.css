@@ -102,9 +102,10 @@
   --shadow-lg-5: 10px 10px 0 #0a192f;
   --shadow-md-5: 6px 6px 0 #0a192f;
 
+  --color-bg: #000000;             
 
-
-  --color-text: #1c1c1e;           
+  --color-text: #ffffff;   
+  --color-text-black: #000000;           
   --color-text-muted: #A0A0A0;
   --border-color: #000000;
 
