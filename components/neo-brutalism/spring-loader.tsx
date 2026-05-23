@@ -6,10 +6,10 @@ const Loader = () => {
     <StyledWrapper>
       <svg xmlns="http://www.w3.org/2000/svg" height={250} width={200} viewBox="0 0 200 200">
         <g style={{order: -1}}>
-          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#D7D9D7" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce"/>
-          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#D7D9D7" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce2"/>
-          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#D7D9D7" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce3"/>
-          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#D7D9D7" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce4"/>
+          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#A8DADC" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce"/>
+          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#A8DADC" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce2"/>
+          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#A8DADC" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce3"/>
+          <ellipse cx="100" cy="100" rx="62" ry="31" stroke="#A8DADC" strokeWidth="1" fill="none" transform="rotate(0 100 100)" id="bounce4"/>
           <svg width={200} height={200} xmlns="http://www.w3.org/2000/svg">
   <defs>
     <mask id="hole-cutter">
@@ -17,7 +17,7 @@ const Loader = () => {
       <ellipse cx="100" cy="100" rx="37" ry="17" fill="black" />
     </mask>
   </defs>
-  <ellipse cx="100" cy="100" rx="65" ry="31" transform="rotate(0 200 80)" strokeWidth="2" fill="#4A4E69" id="bounce5" mask="url(#hole-cutter)" />
+  <ellipse cx="100" cy="100" rx="65" ry="31" transform="rotate(0 200 80)" strokeWidth="2" fill="#f76a9b" id="bounce5" mask="url(#hole-cutter)" />
 </svg>
     </g>
       </svg>

@@ -63,7 +63,8 @@ const StyledWrapper = styled.div`
 
   .card {
     width: 100%;
-    max-width:200px;
+    min-width: 200px;
+    max-width: 220px;
     background: var(--color-accent-1);
     padding: 0.4em;
     border-radius: var(--border-radius);
