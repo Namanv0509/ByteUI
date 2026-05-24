@@ -102,7 +102,7 @@ const StyledWrapper = styled.div`
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--color-text);
-    font-family: var(--font-main);
+    font-family: var(--font-lexend);
   }
 
   .neo-input::placeholder {

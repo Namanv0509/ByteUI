@@ -26,7 +26,7 @@ const StyledWrapper = styled.div`
     justify-content: space-between;
     min-height: 52px;
     font-weight: 700;
-    font-family: var(--font-main);
+    font-family: var(--font-lexend);
   }
 
   .combo-box:hover {
@@ -97,7 +97,7 @@ const StyledWrapper = styled.div`
     padding: 20px;
     text-align: center;
     color: var(--color-text-muted);
-    font-family: var(--font-main);
+    font-family: var(--font-lexend);
   }
 `;
 
