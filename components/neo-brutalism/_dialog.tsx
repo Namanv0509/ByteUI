@@ -67,8 +67,9 @@ const StyledWrapper = styled.div`
             }
             .dialog-button {
                 position: absolute;
-                right: 20px;
+                right: 10px;
                 bottom: 20px;
-                transform: scale(0.9);
+                scale: 0.9;
+
             }
 `

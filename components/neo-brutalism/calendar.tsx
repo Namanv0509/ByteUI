@@ -6,15 +6,28 @@ import "@fontsource/public-sans";
 import { ArrowBigLeft,ArrowBigLeftDash, ArrowBigRight,  ArrowBigRightDash } from 'lucide-react';
 import NeoThemeWrapper from './neo.theme';
 
-const NeoBrutalismCalendar = () => {
-  const [date, setDate] = useState(new Date());
+type NeoBrutalismCalendarProps = {
+  date?: Date | null;
+  onDateChange?: (date: Date) => void;
+};
+
+const NeoBrutalismCalendar = ({ date, onDateChange }: NeoBrutalismCalendarProps) => {
+  const [internalDate, setInternalDate] = useState<Date>(date || new Date());
+
+  const handleChange = (value: any) => {
+    if (value) {
+      const newDate = value as Date;
+      setInternalDate(newDate);
+      onDateChange?.(newDate);
+    }
+  };
 
   return (
     <StyledWrapper>
       <NeoThemeWrapper>
     <Calendar
       value={date}
-      onChange={newDate => setDate(new Date)}
+      onChange={handleChange}
       className="neo-brutal-calendar"
       prevLabel={<ArrowBigLeft  size={20} />}
       nextLabel={<ArrowBigRight size={20} />}
