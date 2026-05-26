@@ -1,9 +1,11 @@
-'use client'
+'use client';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import NeoThemeWrapper from './neo.theme';
 
-const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
+type ButtonVariant = 'primary' | 'secondary' | 'disabled';
+
+const StyledWrapper = styled.div<{ variant: ButtonVariant }>`
   .button {
     padding: 15px 30px;
     margin-top: 10px;
@@ -17,16 +19,14 @@ const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
     border-radius: var(--border-radius);
   }
 
-  /* Primary (Default) */
+  /* Primary */
   .button.primary {
     background: var(--color-accent-1);
-
     &:hover {
       transform: translate(1.5px, 1.5px);
       box-shadow: 1.5px 1.5px 0 #1e1e1e;
       background: var(--color-accent-4);
     }
-
     &:active {
       transform: translate(3px, 3px);
       box-shadow: 0 0 0 #1e1e1e;
@@ -37,44 +37,47 @@ const StyledWrapper = styled.div<{ variant: 'primary' | 'secondary' }>`
   .button.secondary {
     background: var(--color-accent-2);
     color: var(--color-text-black);
-
     &:hover {
       transform: translate(1.5px, 1.5px);
       box-shadow: 1.5px 1.5px 0 #000000;
       background: #f0f0f0;
     }
-
     &:active {
       transform: translate(3px, 3px);
       box-shadow: 0 0 0 #000000;
       background: #e0e0e0;
     }
   }
+  .button.disabled {
+    background: var(--color-accent-3);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+  }
 `;
 
-interface Props {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
-  variant?: 'primary' | 'secondary';
-  [key: string]: any; 
+  variant?: ButtonVariant;
+  className?: string;
 }
 
-const Button: FC<Props> = ({ 
-  children, 
-  variant = 'primary', 
+const Button: FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
   className = '',
-  ...props 
+  ...props
 }) => {
   return (
     <StyledWrapper variant={variant}>
       <NeoThemeWrapper>
-      <div className={className} {...props}>
-        <button 
-          className={`button ${variant}`} 
+        <button
+          className={`button ${variant} ${className}`}
           {...props}
         >
           {children || 'COOL'}
         </button>
-      </div>
       </NeoThemeWrapper>
     </StyledWrapper>
   );

@@ -1,32 +1,25 @@
 'use client'
 
 import { useToast } from '@/hooks/use-toast'
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from '@/components/ui/toast'
+import { ToastProvider, ToastViewport } from '@/components/ui/toast'
+import NeoToast from '@/components/neo-brutalism/_toast_c'
 
 export function Toaster() {
   const { toasts } = useToast()
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
+      {toasts.map((toast) => {
+        const { id, title, description, variant, ...props } = toast as any
         return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
-              )}
-            </div>
-            {action}
-            <ToastClose />
-          </Toast>
+          <NeoToast
+            key={id}
+            id={id}
+            title={title as string}
+            description={description as string}
+            variant={variant ?? undefined}
+            {...props}
+          />
         )
       })}
       <ToastViewport />
