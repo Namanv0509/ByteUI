@@ -107,6 +107,7 @@ const StyledWrapper = styled.div`
   display: inline-block;
   width: 100%;
   max-width: 320px;
+  min-width: 200px;
 
   input {
     width: 100%;

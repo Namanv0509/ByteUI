@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build-registry": "node scripts/build-registry.js",
+    "build": "npm run build-registry && next build",
     "start": "next start",
     "lint": "eslint .",
     "test": "jest --passWithNoTests",

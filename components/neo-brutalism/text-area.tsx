@@ -12,6 +12,7 @@ const TextArea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement>> = (p
 
 const StyledTextArea = styled.textarea`
   width: 400px;
+  min-height: 65px;
   padding: 12px 16px;
   border: var(--border-width) solid var(--border-color);
   box-shadow: var(--shadow-lg-2);
