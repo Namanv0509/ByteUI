@@ -9,7 +9,7 @@ import path from 'path';
 import { execSync } from 'child_process';
 
 const program = new Command();
-const REGISTRY_URL = process.env.BYTEUI_REGISTRY_URL || 'https://byteui-showcase.vercel.app/registry.json';
+const REGISTRY_URL = process.env.BYTEUI_REGISTRY_URL || 'https://byte-ui.vercel.app/registry.json';
 
 // Get current package version from package.json
 const cliPkgPath = new URL('../package.json', import.meta.url);
