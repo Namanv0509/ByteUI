@@ -2,6 +2,7 @@
   "name": "byteui",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build-registry": "node scripts/build-registry.js",
@@ -14,6 +15,13 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "bin": {
+    "byteui": "./cli/bin/index.js"
+  },
+  "files": [
+    "cli/bin",
+    "dist"
+  ],
   "dependencies": {
     "@fontsource/lexend": "^5.2.11",
     "@fontsource/public-sans": "^5.2.7",
