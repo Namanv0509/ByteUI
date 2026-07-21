@@ -124,7 +124,7 @@ const ListItemDescription = styled.p`
 `;
 
 const ListItem = React.forwardRef<HTMLAnchorElement, React.ComponentPropsWithoutRef<"a"> & { title: string }>(
-  ({ className, title, children, ...props }, ref) => {
+  ({ title, children, ...props }, ref) => {
     return (
       <ListItemWrapper>
         <NavigationMenuLink asChild>

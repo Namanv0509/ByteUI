@@ -11,7 +11,7 @@ interface Props {
   title?: string;
   description?: string;
 }
-const Dialog = ({ children, isOpen, onClose,
+const Dialog = ({ isOpen, onClose,
     title = "Are you absolutely sure?",
     description = "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
  }: Props) => {

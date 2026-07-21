@@ -78,16 +78,16 @@ export function FloatingCard() {
   return (
     <StyledWrapper>
       <div className="container-items">
-        <button className="item-color" style={{ '--color': '#e11d48' } as React.CSSProperties} aria-color="#e11d48" />
-        <button className="item-color" style={{ '--color': '#f472b6' } as React.CSSProperties} aria-color="#f472b6" />
-        <button className="item-color" style={{ '--color': '#fb923c' } as React.CSSProperties} aria-color="#fb923c" />
-        <button className="item-color" style={{ '--color': '#facc15' } as React.CSSProperties} aria-color="#facc15" />
-        <button className="item-color" style={{ '--color': '#84cc16' } as React.CSSProperties} aria-color="#84cc16" />
-        <button className="item-color" style={{ '--color': '#10b981' } as React.CSSProperties} aria-color="#10b981" />
-        <button className="item-color" style={{ '--color': '#0ea5e9' } as React.CSSProperties} aria-color="#0ea5e9" />
-        <button className="item-color" style={{ '--color': '#3b82f6' } as React.CSSProperties} aria-color="#3b82f6" />
-        <button className="item-color" style={{ '--color': '#8b5cf6' } as React.CSSProperties} aria-color="#8b5cf6" />
-        <button className="item-color" style={{ '--color': '#a78bfa' } as React.CSSProperties} aria-color="#a78bfa" />
+        <button className="item-color" style={{ '--color': '#e11d48' } as React.CSSProperties} color="#e11d48" />
+        <button className="item-color" style={{ '--color': '#f472b6' } as React.CSSProperties} color="#f472b6" />
+        <button className="item-color" style={{ '--color': '#fb923c' } as React.CSSProperties} color="#fb923c" />
+        <button className="item-color" style={{ '--color': '#facc15' } as React.CSSProperties} color="#facc15" />
+        <button className="item-color" style={{ '--color': '#84cc16' } as React.CSSProperties} color="#84cc16" />
+        <button className="item-color" style={{ '--color': '#10b981' } as React.CSSProperties} color="#10b981" />
+        <button className="item-color" style={{ '--color': '#0ea5e9' } as React.CSSProperties} color="#0ea5e9" />
+        <button className="item-color" style={{ '--color': '#3b82f6' } as React.CSSProperties} color="#3b82f6" />
+        <button className="item-color" style={{ '--color': '#8b5cf6' } as React.CSSProperties} color="#8b5cf6" />
+        <button className="item-color" style={{ '--color': '#a78bfa' } as React.CSSProperties} color="#a78bfa" />
       </div>
     </StyledWrapper>
   );

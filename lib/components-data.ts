@@ -5,7 +5,7 @@ export interface ComponentItem {
   description: string
   tags: string[]
   code: string
-  preview?: React.ComponentType<any>
+  preview?: React.ComponentType
   gradient?: boolean
   morphing?: boolean
   micro?: boolean

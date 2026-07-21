@@ -1,0 +1,84 @@
+
+> byteui@0.1.0 lint
+> eslint .
+
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/app/layout.tsx
+  8:7  error  'geist' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  9:7  error  'geistMono' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/app/providers.tsx
+  13:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/cli/bin/index.js
+   12:22  error  'process' is not defined                        no-undef
+   20:20  error  'process' is not defined                        no-undef
+   36:14  error  'e' is defined but never used                   @typescript-eslint/no-unused-vars
+   44:54  error  Unnecessary escape character: \/                no-useless-escape
+  104:15  error  'namespace' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  116:84  error  'process' is not defined                        no-undef
+  128:14  error  'e' is defined but never used                   @typescript-eslint/no-unused-vars
+  128:17  error  Empty block statement                           no-empty
+  155:12  error  'error' is defined but never used               @typescript-eslint/no-unused-vars
+  253:67  error  'process' is not defined                        no-undef
+  278:44  error  'options' is defined but never used             @typescript-eslint/no-unused-vars
+  297:12  error  'e' is defined but never used                   @typescript-eslint/no-unused-vars
+  434:61  error  'process' is not defined                        no-undef
+  475:15  error  'process' is not defined                        no-undef
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/components/neo-brutalism/calendar.tsx
+  15:10  error  'internalDate' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  17:32  error  Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/components/neo-brutalism/command.tsx
+  3:87  error  'CommandSeparator' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/components/neo-brutalism/pagination.tsx
+  16:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/components/neo-brutalism/toast.tsx
+    5:10  error  'Sparkles' is defined but never used                @typescript-eslint/no-unused-vars
+    5:20  error  'AlertTriangle' is defined but never used           @typescript-eslint/no-unused-vars
+   17:7   error  'Header' is assigned a value but never used         @typescript-eslint/no-unused-vars
+   22:7   error  'Title' is assigned a value but never used          @typescript-eslint/no-unused-vars
+   39:7   error  'Subtitle' is assigned a value but never used       @typescript-eslint/no-unused-vars
+   87:7   error  'IconContainer' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   99:7   error  'BlockTitle' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  106:7   error  'BlockDesc' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  120:29  error  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/components/ui/calendar.tsx
+  128:18  error  'className' is missing in props validation    react/prop-types
+  128:29  error  'rootRef' is missing in props validation      react/prop-types
+  138:21  error  'className' is missing in props validation    react/prop-types
+  138:32  error  'orientation' is missing in props validation  react/prop-types
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/components/ui/use-toast.ts
+  18:7  error  'actionTypes' is assigned a value but only used as a type  @typescript-eslint/no-unused-vars
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/hooks/use-toast.ts
+  18:7  error  'actionTypes' is assigned a value but only used as a type  @typescript-eslint/no-unused-vars
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/lib/gallery/discover.server.ts
+  21:3  error  'sectionDescription' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/scripts/build-registry.js
+    1:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+    1:12  error  'require' is not defined                 no-undef
+    2:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+    2:14  error  'require' is not defined                 no-undef
+    4:37  error  '__dirname' is not defined               no-undef
+    5:32  error  '__dirname' is not defined               no-undef
+    6:33  error  '__dirname' is not defined               no-undef
+  112:34  error  'filePath' is defined but never used     @typescript-eslint/no-unused-vars
+  241:32  error  '__dirname' is not defined               no-undef
+
+/Users/namanverma/Downloads/Code/ByteUI-2/ByteUI/webpack.config.js
+   1:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+   1:14  error  'require' is not defined                 no-undef
+   3:1   error  'module' is not defined                  no-undef
+   8:24  error  '__dirname' is not defined               no-undef
+  18:25  error  '__dirname' is not defined               no-undef
+
+✖ 51 problems (51 errors, 0 warnings)
+

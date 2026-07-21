@@ -10,7 +10,7 @@ export function Toaster() {
   return (
     <ToastProvider>
       {toasts.map((toast) => {
-        const { id, title, description, variant, ...props } = toast as any
+        const { id, title, description, variant, ...props } = toast
         return (
           <NeoToast
             key={id}

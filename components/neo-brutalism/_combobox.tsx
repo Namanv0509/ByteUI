@@ -66,9 +66,11 @@ const StyledWrapper = styled.div`
     padding: 14px 16px;
     border: none;
     border-bottom: var(--border-width) solid var(--color-text);
-    background: transparent;
+    background: var(--color-bg);
     color: var(--color-text);
     font-size: 15px;
+    position: sticky;
+    top: 0;
   }
 
   .option {
@@ -114,7 +116,7 @@ interface ComboBoxProps {
   placeholder?: string;
   className?: string;
   searchPlaceholder?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const ComboBox: FC<ComboBoxProps> = ({
