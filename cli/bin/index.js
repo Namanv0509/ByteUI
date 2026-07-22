@@ -272,7 +272,49 @@ export function cn(...inputs: ClassValue[]) {
 
   console.log(pc.bold(pc.green('\nByteUI successfully initialized!')));
   console.log('You can now add components. Example:');
-  console.log(pc.cyan('  npx byteui add button\n'));
+  console.log(pc.cyan('  npx @explorers_111/byteui add button\n'));
+}
+
+async function listCommand() {
+  const spinner = ora('Fetching available components...').start();
+  let registry;
+  try {
+    registry = await fetchRegistry();
+    spinner.stop();
+  } catch (e) {
+    spinner.fail(`Failed to fetch registry: ${e.message}`);
+    return;
+  }
+
+  const components = registry.components || {};
+  const categories = {};
+
+  for (const [key, comp] of Object.entries(components)) {
+    if (comp.type === 'utils') continue;
+    let group = 'other';
+    if (key.includes('/')) {
+      group = key.split('/')[0];
+    } else if (comp.category) {
+      group = comp.category;
+    }
+    if (!categories[group]) categories[group] = [];
+    categories[group].push({ key, name: comp.name || key.split('/').pop() });
+  }
+
+  console.log(pc.bold(pc.cyan('\nByteUI Available Components:\n')));
+
+  const groups = Object.keys(categories).sort();
+  for (const group of groups) {
+    console.log(pc.bold(pc.yellow(`📁 ${group} (${categories[group].length} components)`)));
+    const items = categories[group].sort((a, b) => a.key.localeCompare(b.key));
+    for (const item of items) {
+      console.log(`  ${pc.green('•')} ${pc.white(item.key)}`);
+    }
+    console.log('');
+  }
+
+  console.log(pc.dim('To add a component to your project, run:'));
+  console.log(pc.cyan('  npx @explorers_111/byteui add <component-name>\n'));
 }
 
 async function addCommand(componentsInput, options) {
@@ -287,7 +329,7 @@ async function addCommand(componentsInput, options) {
   }
 
   if (!fs.existsSync('components.json')) {
-    console.log(pc.red('components.json not found. Run "npx byteui init" to configure your project.'));
+    console.log(pc.red('components.json not found. Run "npx @explorers_111/byteui init" to configure your project.'));
     return;
   }
 
@@ -458,9 +500,10 @@ async function addCommand(componentsInput, options) {
 }
 
 program
-  .name('byteui')
+  .name('@explorers_111/byteui')
   .description('CLI tool to integrate ByteUI components')
-  .version(cliPkg.version);
+  .version(cliPkg.version)
+  .option('-l, --list', 'List all available components');
 
 program
   .command('init')
@@ -471,5 +514,19 @@ program
   .command('add [components...]')
   .description('Add components to your project')
   .action(addCommand);
+
+program
+  .command('list')
+  .alias('ls')
+  .description('List all available components in registry')
+  .action(listCommand);
+
+program.action((options) => {
+  if (options.list) {
+    listCommand();
+  } else {
+    program.help();
+  }
+});
 
 program.parse(process.argv);

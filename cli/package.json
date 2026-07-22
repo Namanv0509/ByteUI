@@ -1,10 +1,10 @@
 {
-  "name": "byteui",
+  "name": "@explorers_111/byteui",
   "version": "0.1.0",
   "description": "CLI tool for installing ByteUI components",
   "type": "module",
   "bin": {
-    "byteui": "./bin/index.js"
+    "byteui": "bin/index.js"
   },
   "files": [
     "bin"
