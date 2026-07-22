@@ -15,8 +15,11 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
   const router = useRouter()
   const [copied, setCopied] = useState(false)
 
+  const componentKey = component.sectionId ? `${component.sectionId}/${component.slug}` : component.slug
+  const installCommand = `npx @explorers_111/byteui add ${componentKey}`
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(component.code)
+    navigator.clipboard.writeText(installCommand)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }

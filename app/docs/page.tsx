@@ -24,21 +24,21 @@ export default function DocsPage() {
       id: 'installation',
       title: 'Installation & Setup',
       content: `
-        To use ByteUI components in your project, you need to have the following installed:
+        Adding ByteUI components to your React / Next.js project is quick and seamless with our CLI tool:
 
-        1. Create a React project (if you don't have one):
-           npx create-next-app@latest my-app
+        1. Initialize ByteUI in your project root:
+           npx @explorers_111/byteui init
 
-        2. Install required dependencies:
-           npm install framer-motion next-themes
+           This creates a components.json configuration and adds required utility helpers.
 
-        3. Install Tailwind CSS:
-           npm install -D tailwindcss postcss autoprefixer
-           npx tailwindcss init -p
+        2. List available components anytime:
+           npx @explorers_111/byteui list
 
-        4. Copy any component code from our gallery
-        5. Paste it into your components directory
-        6. Import and use it in your application
+        3. Add any component to your project:
+           npx @explorers_111/byteui add <component-name>
+
+           Example:
+           npx @explorers_111/byteui add neo-brutalism/button
       `,
     },
     {
@@ -48,13 +48,10 @@ export default function DocsPage() {
         Getting started with our components is simple:
 
         1. Browse the Gallery: Visit /gallery to explore all available components
-        2. Find Your Component: Use search and filters to find what you need
-        3. Preview: See the component in action in the preview section
-        4. Copy Code: Click the copy button to copy the component code
-        5. Customize: Modify colors, animations, and sizes to match your needs
-        6. Integrate: Import and use in your React/Next.js application
-
-        Each component is fully self-contained and includes all necessary imports.
+        2. Copy Install Command: Click the copy button on any component card or detail page
+        3. Run CLI Command: Paste and execute the npx @explorers_111/byteui add command in your terminal
+        4. Automatic Setup: The CLI installs component code, required npm dependencies, and CSS variables automatically
+        5. Import & Use: Import the component from your components directory directly into your application!
       `,
     },
     {

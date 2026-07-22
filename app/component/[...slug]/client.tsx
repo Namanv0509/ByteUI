@@ -21,8 +21,11 @@ export function ClientComponentDetail({
 }: ClientComponentDetailProps) {
   const [copied, setCopied] = useState(false)
 
+  const componentKey = component.sectionId ? `${component.sectionId}/${component.slug}` : component.slug
+  const installCommand = `npx @explorers_111/byteui add ${componentKey}`
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(component.code)
+    navigator.clipboard.writeText(installCommand)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -87,7 +90,7 @@ export function ClientComponentDetail({
             className="space-y-6"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold">Component Code</h2>
+              <h2 className="text-2xl font-bold">Installation</h2>
               <motion.button
                 type="button"
                 onClick={handleCopy}
@@ -97,11 +100,11 @@ export function ClientComponentDetail({
               >
                 {copied ? (
                   <>
-                    <Check size={18} /> Copied!
+                    <Check size={18} /> Copied Command!
                   </>
                 ) : (
                   <>
-                    <Copy size={18} /> Copy Code
+                    <Copy size={18} /> Copy Command
                   </>
                 )}
               </motion.button>
@@ -112,7 +115,7 @@ export function ClientComponentDetail({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <CodeBlock code={component.code} language="tsx" collapsible />
+              <CodeBlock code={installCommand} language="bash" collapsible={false} />
             </motion.div>
 
             <motion.div
@@ -122,13 +125,13 @@ export function ClientComponentDetail({
               className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 space-y-3"
             >
               <h3 className="font-semibold text-yellow-900 dark:text-yellow-100">
-                How to Use
+                How to Install
               </h3>
               <ol className="list-decimal list-inside space-y-2 text-sm text-foreground/70">
-                <li>Copy the code using the button above</li>
-                <li>Paste it into your project</li>
-                <li>Install styled-components if the component uses it</li>
-                <li>Import and use the component in your application</li>
+                <li>Initialize ByteUI in your project (if not done yet): <code className="bg-yellow-200/60 dark:bg-yellow-900/60 px-1.5 py-0.5 rounded text-xs font-mono text-foreground">npx @explorers_111/byteui init</code></li>
+                <li>Run the command above to install <strong>{component.name}</strong> directly into your project.</li>
+                <li>All required npm packages and Tailwind theme CSS variables will be installed automatically.</li>
+                <li>Import and use the component in your React/Next.js application!</li>
               </ol>
             </motion.div>
           </motion.div>
