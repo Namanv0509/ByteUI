@@ -1,6 +1,6 @@
 'use client';
 
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from 'cmdk';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'cmdk';
 import { Search, User, Settings, LogOut, CreditCard  } from 'lucide-react';
 import styled from 'styled-components';
 import "@fontsource/public-sans";
@@ -101,7 +101,7 @@ const StyledWrapper = styled.div`
     border: none;
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-text-black);
     font-family: var(--font-lexend);
   }
 

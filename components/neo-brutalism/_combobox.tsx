@@ -110,7 +110,7 @@ export interface Option {
 }
 
 interface ComboBoxProps {
-  options?: Option[];           // Made optional
+  options?: Option[];           
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
@@ -120,7 +120,7 @@ interface ComboBoxProps {
 }
 
 const ComboBox: FC<ComboBoxProps> = ({
-  options = [],                    // Default to empty array
+  options = [],                    
   value: controlledValue,
   onChange,
   placeholder = 'Select an option',
