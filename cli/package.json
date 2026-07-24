@@ -1,6 +1,6 @@
 {
   "name": "@explorers_111/byteui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI tool for installing ByteUI components",
   "type": "module",
   "bin": {
