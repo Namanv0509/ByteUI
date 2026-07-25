@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import NeoThemeWrapper from '@/components/neo-brutalism/neo.theme'
 import styled from 'styled-components'
+import { NPM_PACKAGE_NAME, NPM_PACKAGE_URL } from '@/lib/links'
 
 const FooterShell = styled.footer`
   margin-top: 4rem;
@@ -39,7 +40,19 @@ const FooterShell = styled.footer`
     transition: color 0.15s ease;
 
     &:hover {
-      color: var(--color-text-black);
+      opacity: 0.7;
+    }
+  }
+
+  .npm-link {
+    color: var(--color-text-black);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      opacity: 0.7;
     }
   }
 `
@@ -111,6 +124,16 @@ export function Footer() {
                   <Link href="/gallery" className="link">
                     Component Gallery
                   </Link>
+                </li>
+                <li>
+                  <a
+                    href={NPM_PACKAGE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="npm-link"
+                  >
+                    {NPM_PACKAGE_NAME} on npm
+                  </a>
                 </li>
                 <li>
                   <code className="text-sm font-mono">

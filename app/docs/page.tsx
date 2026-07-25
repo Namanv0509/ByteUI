@@ -4,6 +4,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { PageShell } from '@/components/page-shell'
 import Button from '@/components/neo-brutalism/button'
+import { NPM_PACKAGE_NAME, NPM_PACKAGE_URL } from '@/lib/links'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
@@ -27,6 +28,9 @@ export default function DocsPage() {
       id: 'installation',
       title: 'Installation',
       content: `
+        Package on npm: ${NPM_PACKAGE_NAME}
+        ${NPM_PACKAGE_URL}
+
         1. Initialize ByteUI in your project:
            npx @explorers_111/byteui init
 
@@ -161,34 +165,49 @@ export default function DocsPage() {
                 <div className="space-y-3">
                   {section.content.split('\n').map((line, i) => {
                     if (!line.trim()) return null
-                    if (line.trim().startsWith('•')) {
+                    const trimmed = line.trim()
+                    if (trimmed.startsWith('•')) {
                       return (
                         <div key={i} className="section-copy ml-4">
-                          {line.trim()}
+                          {trimmed}
                         </div>
                       )
                     }
-                    if (line.trim().match(/^\d+\./)) {
+                    if (trimmed.match(/^\d+\./)) {
                       return (
                         <div key={i} className="section-copy ml-1">
-                          {line.trim()}
+                          {trimmed}
                         </div>
                       )
                     }
-                    if (line.trim().match(/^[A-Z].*:$/)) {
+                    if (trimmed.match(/^[A-Z].*:$/)) {
                       return (
                         <h3
                           key={i}
                           className="text-xl font-bold mt-4 mb-1"
                           style={{ fontFamily: 'var(--font-lexend)' }}
                         >
-                          {line.trim()}
+                          {trimmed}
                         </h3>
+                      )
+                    }
+                    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+                      return (
+                        <p key={i} className="section-copy leading-relaxed">
+                          <a
+                            href={trimmed}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline font-bold underline-offset-2 hover:opacity-70"
+                          >
+                            {trimmed}
+                          </a>
+                        </p>
                       )
                     }
                     return (
                       <p key={i} className="section-copy leading-relaxed">
-                        {line.trim()}
+                        {trimmed}
                       </p>
                     )
                   })}
@@ -212,10 +231,13 @@ export default function DocsPage() {
             <code className="neo-chip">
               npx @explorers_111/byteui add neo-brutalism/button
             </code>
-            <div>
+            <div className="flex gap-3 justify-center flex-wrap">
               <Link href="/gallery">
                 <Button variant="primary">Explore Components</Button>
               </Link>
+              <a href={NPM_PACKAGE_URL} target="_blank" rel="noopener noreferrer">
+                <Button variant="secondary">View on npm</Button>
+              </a>
             </div>
           </div>
         </motion.div>

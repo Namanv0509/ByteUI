@@ -2,6 +2,8 @@
 
 ByteUI is a component library featuring modern UI components, including Neo-Brutalism and standard UI styles for React and Next.js applications.
 
+**npm:** [@explorers_111/byteui](https://www.npmjs.com/package/@explorers_111/byteui)
+
 ## CLI Usage
 
 Install and add components directly into your codebase using the `@explorers_111/byteui` CLI:

@@ -15,6 +15,7 @@ import NeoBrutalismCalendar from '@/components/neo-brutalism/calendar'
 import ToolTip from '@/components/neo-brutalism/tool-tip'
 import SpringLoader from '@/components/neo-brutalism/spring-loader'
 import Toast from '@/components/neo-brutalism/toast'
+import { NPM_PACKAGE_URL } from '@/lib/links'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -72,6 +73,13 @@ const StyledWrapper = styled.div`
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 1rem;
     color: var(--color-text-black);
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
 
   .feature-title {
@@ -164,10 +172,20 @@ export default function Home() {
                   <Link href="/docs">
                     <Button variant="secondary">Docs</Button>
                   </Link>
+                  <a href={NPM_PACKAGE_URL} target="_blank" rel="noopener noreferrer">
+                    <Button variant="secondary">View on npm</Button>
+                  </a>
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
-                  <code className="cli-chip">{CLI_COMMAND}</code>
+                  <a
+                    href={NPM_PACKAGE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cli-chip"
+                  >
+                    {CLI_COMMAND}
+                  </a>
                 </motion.div>
               </motion.div>
             </div>
@@ -235,12 +253,31 @@ export default function Home() {
                 <h2 className="cta-title">Get started</h2>
                 <p className="cta-copy">Init once, then add any component by name.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-                  <code className="cli-chip">npx @explorers_111/byteui init</code>
-                  <code className="cli-chip">npx @explorers_111/byteui add button</code>
+                  <a
+                    href={NPM_PACKAGE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cli-chip"
+                  >
+                    npx @explorers_111/byteui init
+                  </a>
+                  <a
+                    href={NPM_PACKAGE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cli-chip"
+                  >
+                    npx @explorers_111/byteui add button
+                  </a>
                 </div>
-                <Link href="/gallery">
-                  <Button variant="secondary">View Gallery</Button>
-                </Link>
+                <div className="flex gap-3 justify-center flex-wrap">
+                  <Link href="/gallery">
+                    <Button variant="secondary">View Gallery</Button>
+                  </Link>
+                  <a href={NPM_PACKAGE_URL} target="_blank" rel="noopener noreferrer">
+                    <Button variant="primary">npm package</Button>
+                  </a>
+                </div>
               </motion.div>
             </NeoThemeWrapper>
           </section>
