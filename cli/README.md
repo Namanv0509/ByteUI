@@ -2,6 +2,8 @@
 
 CLI tool for adding ByteUI components directly to your React / Next.js project.
 
+**Package:** [https://www.npmjs.com/package/@explorers_111/byteui](https://www.npmjs.com/package/@explorers_111/byteui)
+
 ## Installation & Usage
 
 You can execute the CLI directly using `npx`:

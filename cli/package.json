@@ -3,6 +3,7 @@
   "version": "0.1.3",
   "description": "CLI tool for installing ByteUI components",
   "type": "module",
+  "homepage": "https://www.npmjs.com/package/@explorers_111/byteui",
   "bin": {
     "byteui": "bin/index.js"
   },
