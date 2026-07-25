@@ -3,6 +3,8 @@
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { GalleryComponentPreview } from '@/components/gallery/gallery-component-preview'
+import { PageShell } from '@/components/page-shell'
+import Button from '@/components/neo-brutalism/button'
 import type { GalleryComponent } from '@/lib/gallery/types'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -21,7 +23,9 @@ export function ClientComponentDetail({
 }: ClientComponentDetailProps) {
   const [copied, setCopied] = useState(false)
 
-  const componentKey = component.sectionId ? `${component.sectionId}/${component.slug}` : component.slug
+  const componentKey = component.sectionId
+    ? `${component.sectionId}/${component.slug}`
+    : component.slug
   const installCommand = `npx @explorers_111/byteui add ${componentKey}`
 
   const handleCopy = () => {
@@ -31,7 +35,7 @@ export function ClientComponentDetail({
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <PageShell>
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -42,20 +46,21 @@ export function ClientComponentDetail({
         >
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 text-primary hover:underline"
+            className="inline-flex items-center gap-2 font-bold hover:opacity-70"
+            style={{ color: 'var(--color-text-black)' }}
           >
             <ArrowLeft size={20} />
             Back to Gallery
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-1">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="space-y-6"
           >
-            <div className="bg-white dark:bg-slate-700 rounded-2xl border border-border p-12 flex items-center justify-center min-h-96">
+            <div className="neo-panel neo-panel-accent flex items-center justify-center min-h-96">
               <GalleryComponentPreview
                 sectionId={component.sectionId}
                 slug={component.slug}
@@ -63,23 +68,15 @@ export function ClientComponentDetail({
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold">{component.name}</h1>
-              <p className="text-lg text-foreground/70">{component.description}</p>
+              <h1 className="detail-title">{component.name}</h1>
+              <p className="section-copy">{component.description}</p>
 
-              <div className="flex flex-wrap gap-2 pt-4">
+              <div className="flex flex-wrap gap-2 pt-2">
                 {component.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full text-sm bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300"
-                  >
+                  <span key={tag} className="neo-tag">
                     {tag}
                   </span>
                 ))}
-              </div>
-
-              <div className="pt-4 border-t border-border">
-                <p className="text-sm text-foreground/60 mb-2">Collection</p>
-                <p className="font-semibold">{component.sectionTitle}</p>
               </div>
             </div>
           </motion.div>
@@ -89,31 +86,26 @@ export function ClientComponentDetail({
             animate={{ opacity: 1, x: 0 }}
             className="space-y-6"
           >
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold">Installation</h2>
-              <motion.button
-                type="button"
-                onClick={handleCopy}
-                className="px-4 py-2 rounded-lg bg-yellow-500 dark:bg-yellow-600 text-black font-semibold flex items-center gap-2 hover:bg-yellow-600 dark:hover:bg-yellow-700"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <h2 className="section-title">Installation</h2>
+              <Button variant="primary" onClick={handleCopy} type="button">
                 {copied ? (
-                  <>
-                    <Check size={18} /> Copied Command!
-                  </>
+                  <span className="inline-flex items-center gap-2">
+                    <Check size={18} /> Copied
+                  </span>
                 ) : (
-                  <>
+                  <span className="inline-flex items-center gap-2">
                     <Copy size={18} /> Copy Command
-                  </>
+                  </span>
                 )}
-              </motion.button>
+              </Button>
             </div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
+              className="neo-panel overflow-hidden"
             >
               <CodeBlock code={installCommand} language="bash" collapsible={false} />
             </motion.div>
@@ -122,16 +114,24 @@ export function ClientComponentDetail({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 space-y-3"
+              className="neo-panel neo-panel-mint p-6 space-y-3"
             >
-              <h3 className="font-semibold text-yellow-900 dark:text-yellow-100">
-                How to Install
+              <h3
+                className="font-bold text-lg"
+                style={{ fontFamily: 'var(--font-lexend)' }}
+              >
+                How to install
               </h3>
-              <ol className="list-decimal list-inside space-y-2 text-sm text-foreground/70">
-                <li>Initialize ByteUI in your project (if not done yet): <code className="bg-yellow-200/60 dark:bg-yellow-900/60 px-1.5 py-0.5 rounded text-xs font-mono text-foreground">npx @explorers_111/byteui init</code></li>
-                <li>Run the command above to install <strong>{component.name}</strong> directly into your project.</li>
-                <li>All required npm packages and Tailwind theme CSS variables will be installed automatically.</li>
-                <li>Import and use the component in your React/Next.js application!</li>
+              <ol className="list-decimal list-inside space-y-2 section-copy">
+                <li>
+                  Init once:{' '}
+                  <code className="neo-chip">npx @explorers_111/byteui init</code>
+                </li>
+                <li>
+                  Run the command above to add <strong>{component.name}</strong>.
+                </li>
+                <li>Dependencies and theme CSS are installed automatically.</li>
+                <li>Import the component from your project and use it.</li>
               </ol>
             </motion.div>
           </motion.div>
@@ -142,26 +142,25 @@ export function ClientComponentDetail({
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-20 pt-12 border-t border-border"
+            className="mt-20 pt-12"
+            style={{ borderTop: 'var(--border-width) solid var(--border-color)' }}
           >
-            <h2 className="text-3xl font-bold mb-8">More from {component.sectionTitle}</h2>
+            <h2 className="section-title mb-8">More from {component.sectionTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedComponents.map((relatedComp) => (
                 <Link
                   key={relatedComp.id}
                   href={`/component/${relatedComp.sectionId}/${relatedComp.slug}`}
                 >
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="p-4 rounded-xl border border-border hover:border-yellow-500 transition-colors cursor-pointer"
-                  >
-                    <h3 className="font-bold text-lg mb-2 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                  <div className="neo-panel p-5 h-full transition-transform hover:translate-x-[2px] hover:translate-y-[2px]">
+                    <h3
+                      className="font-bold text-lg mb-2"
+                      style={{ fontFamily: 'var(--font-lexend)' }}
+                    >
                       {relatedComp.name}
                     </h3>
-                    <p className="text-sm text-foreground/60">
-                      {relatedComp.description}
-                    </p>
-                  </motion.div>
+                    <p className="section-copy">{relatedComp.description}</p>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -170,6 +169,6 @@ export function ClientComponentDetail({
       </div>
 
       <Footer />
-    </div>
+    </PageShell>
   )
 }

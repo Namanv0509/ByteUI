@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import NeoThemeWrapper from './neo.theme';
 
-type ButtonVariant = 'primary' | 'secondary' | 'disabled';
+type ButtonVariant = 'primary' | 'secondary' | 'disabled' | 'cta';
 
 const StyledWrapper = styled.div<{ variant: ButtonVariant }>`
   .button {
@@ -22,6 +22,18 @@ const StyledWrapper = styled.div<{ variant: ButtonVariant }>`
   /* Primary */
   .button.primary {
     background: var(--color-accent-1);
+    &:hover {
+      transform: translate(1.5px, 1.5px);
+      box-shadow: 1.5px 1.5px 0 #1e1e1e;
+      background: var(--color-accent-4);
+    }
+    &:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 #1e1e1e;
+    }
+  }
+  .button.cta{
+   background: var(--color-accent-4);
     &:hover {
       transform: translate(1.5px, 1.5px);
       box-shadow: 1.5px 1.5px 0 #1e1e1e;

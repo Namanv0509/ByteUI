@@ -2,6 +2,8 @@
 
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
+import { PageShell } from '@/components/page-shell'
+import Button from '@/components/neo-brutalism/button'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
@@ -11,241 +13,128 @@ export default function DocsPage() {
       id: 'getting-started',
       title: 'Getting Started',
       content: `
-        Welcome to ByteUI! This guide will help you get started with our collection of premium UI components.
-        
-        Our components are built with modern technologies:
-        • React 18+ for component architecture
-        • Framer Motion for smooth animations
-        • Tailwind CSS for styling
-        • TypeScript for type safety
+        ByteUI is a React component library you install with a CLI.
+        Components are copied into your project so you own the source.
+
+        Stack:
+        • React 18+
+        • Tailwind CSS
+        • TypeScript
+        • styled-components (for neo-brutalism)
       `,
     },
     {
       id: 'installation',
-      title: 'Installation & Setup',
+      title: 'Installation',
       content: `
-        Adding ByteUI components to your React / Next.js project is quick and seamless with our CLI tool:
-
-        1. Initialize ByteUI in your project root:
+        1. Initialize ByteUI in your project:
            npx @explorers_111/byteui init
 
-           This creates a components.json configuration and adds required utility helpers.
-
-        2. List available components anytime:
+        2. List available components:
            npx @explorers_111/byteui list
 
-        3. Add any component to your project:
-           npx @explorers_111/byteui add <component-name>
-
-           Example:
+        3. Add a component:
            npx @explorers_111/byteui add neo-brutalism/button
       `,
     },
     {
       id: 'usage',
-      title: 'How to Use Components',
+      title: 'How to Use',
       content: `
-        Getting started with our components is simple:
+        1. Browse the Gallery to find a component
+        2. Copy the install command from the card or detail page
+        3. Run npx @explorers_111/byteui add <name>
+        4. Import the file from your components folder and use it
+      `,
+    },
+    {
+      id: 'collections',
+      title: 'Collections',
+      content: `
+        Components are grouped by design style in lib/component-sections.ts.
 
-        1. Browse the Gallery: Visit /gallery to explore all available components
-        2. Copy Install Command: Click the copy button on any component card or detail page
-        3. Run CLI Command: Paste and execute the npx @explorers_111/byteui add command in your terminal
-        4. Automatic Setup: The CLI installs component code, required npm dependencies, and CSS variables automatically
-        5. Import & Use: Import the component from your components directory directly into your application!
+        Neo Brutalism:
+        - Bold borders, hard shadows, high contrast
+        - Buttons, cards, forms, navigation, and more
+
+        Enable or hide collections by toggling enabled in that file.
       `,
     },
     {
       id: 'customization',
-      title: 'Customization Guide',
+      title: 'Customization',
       content: `
-        All our components are built to be easily customizable. Here are some common modifications:
+        Because code lands in your repo, edit freely.
 
-        Colors:
-        - Most components use Tailwind CSS classes
-        - Simply replace colors like 'purple-600' with your preferred color
-        - Use CSS custom properties for dynamic theming
+        Theme:
+        - Neo tokens live under [data-theme="neo"]
+        - Wrap UI with NeoThemeWrapper to apply the theme
+        - Change accent colors, borders, and shadows via CSS variables
 
-        Animation Speed:
-        - Modify the 'duration' property in Framer Motion animations
-        - duration: 2 (in seconds) controls animation speed
-
-        Size:
-        - Change width and height classes
-        - Adjust padding and margins using Tailwind utilities
-
-        Responsive Design:
-        - Add responsive prefixes (md:, lg:) for different screen sizes
-        - All components are mobile-friendly by default
-      `,
-    },
-    {
-      id: 'components-overview',
-      title: 'Component Categories',
-      content: `
-        Our library is organized into three main categories:
-
-        1. Micro-interactions
-        These are small, delightful interactions that enhance user experience:
-        - Hover effects and ripple buttons
-        - Floating animations
-        - Expandable cards
-        - Slide-in menus
-
-        2. Morphing Shapes
-        Components that transform and morph smoothly:
-        - Morphing cards that change shape
-        - Orbital buttons with rotating elements
-        - Shape-shifting elements
-
-        3. Gradient Effects
-        Beautiful gradient animations and visual effects:
-        - Animated gradient text
-        - Glassmorphism designs
-        - Shimmer effects
-        - Gradient backgrounds
+        Components:
+        - Adjust padding, radius, and copy in the component file
+        - Keep TypeScript props in sync when you extend behavior
       `,
     },
     {
       id: 'dependencies',
-      title: 'Required Dependencies',
+      title: 'Dependencies',
       content: `
-        All components require these core dependencies:
-
         Core:
         - React 18+
-        - React DOM 18+
-        - Next.js 13+ (if using Next.js)
+        - Next.js 13+ (for this docs site)
         - Tailwind CSS 3+
 
-        Animation:
-        - Framer Motion (for animations)
-
-        Utilities:
-        - clsx or classnames (for conditional classes)
-        - class-variance-authority (for component variants)
-
-        Optional:
-        - Lucide React (for icons in some components)
-        - react-syntax-highlighter (for code display)
-
-        Most of these are pre-installed in standard Next.js projects.
-      `,
-    },
-    {
-      id: 'best-practices',
-      title: 'Best Practices',
-      content: `
-        Here are some best practices when using ByteUI components:
-
-        1. Performance
-        - Use 'use client' directive for client-side components
-        - Memoize components when using them multiple times
-        - Lazy load components when not immediately needed
-
-        2. Accessibility
-        - Add proper ARIA labels to interactive elements
-        - Ensure keyboard navigation works
-        - Test with screen readers
-
-        3. Theming
-        - Use CSS custom properties for theme colors
-        - Support both light and dark modes
-        - Ensure sufficient color contrast
-
-        4. Animation
-        - Respect prefers-reduced-motion for accessibility
-        - Don't overuse animations
-        - Keep animations under 500ms for UI feedback
-
-        5. Code Organization
-        - Separate preview and usage logic
-        - Create reusable variants
-        - Document custom props
+        Often installed by the CLI when needed:
+        - framer-motion
+        - styled-components
+        - lucide-react
       `,
     },
     {
       id: 'troubleshooting',
       title: 'Troubleshooting',
       content: `
-        Common issues and solutions:
+        Issue: Styles look unthemed
+        Solution: Wrap with NeoThemeWrapper or ensure data-theme="neo" is on a parent
 
-        Issue: Framer Motion animations not working
-        Solution: Make sure 'use client' directive is at the top of your file
+        Issue: Tailwind classes missing
+        Solution: Confirm Tailwind scans your components path
 
-        Issue: Tailwind styles not applying
-        Solution: Ensure Tailwind CSS is properly configured in your project
-
-        Issue: Components not importing correctly
-        Solution: Check file paths and make sure files are in the correct directory
-
-        Issue: Theme not switching
-        Solution: Verify next-themes is properly set up in your layout.tsx
-
-        Issue: Animations running on server-side rendering
-        Solution: Wrap animations in a useEffect with mounted state check
-
-        Need more help? Check the component preview page for working examples.
-      `,
-    },
-    {
-      id: 'contributing',
-      title: 'Contributing Components',
-      content: `
-        We love community contributions! Here's how you can contribute:
-
-        Component Requirements:
-        - Unique and not commonly found elsewhere
-        - Smooth, well-implemented animations
-        - Fully functional and bug-free
-        - Works with React 18+ and Tailwind CSS
-        - Includes proper TypeScript types
-
-        How to Contribute:
-        1. Create an awesome component
-        2. Test it thoroughly
-        3. Document usage
-        4. Submit with code example
-        5. Wait for review and feedback
-
-        Benefits:
-        - Your component featured on ByteUI
-        - Credit and attribution
-        - Help the community with great components
-        - Build your portfolio
-
-        Contact us for more details about contributing!
+        Issue: CLI cannot find a component
+        Solution: Run npx @explorers_111/byteui list and use the exact key
       `,
     },
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageShell>
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-14 space-y-4"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Documentation</h1>
-          <p className="text-xl text-foreground/60">Learn how to use ByteUI components in your projects</p>
+          <h1 className="page-title">Documentation</h1>
+          <p className="page-subtitle">
+            Install with the CLI, own the source, style with neo tokens.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-          {/* Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="hidden lg:block"
           >
-            <div className="sticky top-24 space-y-2">
+            <div className="sticky top-24 neo-panel p-3 space-y-1">
               {sections.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="block px-4 py-2 rounded-lg text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
+                  className="neo-sidebar-link"
                 >
                   {section.title}
                 </a>
@@ -253,11 +142,10 @@ export default function DocsPage() {
             </div>
           </motion.div>
 
-          {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="lg:col-span-3 space-y-12"
+            className="lg:col-span-3 space-y-10"
           >
             {sections.map((section, index) => (
               <motion.section
@@ -266,36 +154,40 @@ export default function DocsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
-                transition={{ delay: index * 0.1 }}
-                className="scroll-mt-24"
+                transition={{ delay: index * 0.05 }}
+                className="scroll-mt-24 neo-panel p-6 md:p-8"
               >
-                <h2 className="text-3xl font-bold mb-4">{section.title}</h2>
-                <div className="prose prose-invert max-w-none space-y-4">
+                <h2 className="section-title mb-4">{section.title}</h2>
+                <div className="space-y-3">
                   {section.content.split('\n').map((line, i) => {
                     if (!line.trim()) return null
                     if (line.trim().startsWith('•')) {
                       return (
-                        <div key={i} className="text-foreground/70 ml-4">
+                        <div key={i} className="section-copy ml-4">
                           {line.trim()}
                         </div>
                       )
                     }
                     if (line.trim().match(/^\d+\./)) {
                       return (
-                        <div key={i} className="text-foreground/70 ml-4">
+                        <div key={i} className="section-copy ml-1">
                           {line.trim()}
                         </div>
                       )
                     }
                     if (line.trim().match(/^[A-Z].*:$/)) {
                       return (
-                        <h3 key={i} className="text-xl font-semibold mt-4 mb-2">
+                        <h3
+                          key={i}
+                          className="text-xl font-bold mt-4 mb-1"
+                          style={{ fontFamily: 'var(--font-lexend)' }}
+                        >
                           {line.trim()}
                         </h3>
                       )
                     }
                     return (
-                      <p key={i} className="text-foreground/70 leading-relaxed">
+                      <p key={i} className="section-copy leading-relaxed">
                         {line.trim()}
                       </p>
                     )
@@ -306,32 +198,30 @@ export default function DocsPage() {
           </motion.div>
         </div>
 
-        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 pt-12 border-t border-border"
+          className="mt-16"
         >
-          <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-primary/30 rounded-3xl p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Build?</h2>
-            <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-              Browse our component gallery and find the perfect component for your next project.
+          <div className="neo-panel neo-panel-accent p-10 text-center space-y-10">
+            <h2 className="section-title cta-doc">Ready to build?</h2>
+            <p className="section-copy max-w-xl mx-auto cta-doc">
+              Browse the gallery and add components with one command.
             </p>
-            <Link href="/gallery">
-              <motion.button
-                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Explore Components
-              </motion.button>
-            </Link>
+            <code className="neo-chip">
+              npx @explorers_111/byteui add neo-brutalism/button
+            </code>
+            <div>
+              <Link href="/gallery">
+                <Button variant="primary">Explore Components</Button>
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>
 
       <Footer />
-    </div>
+    </PageShell>
   )
 }

@@ -5,17 +5,86 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
 import type { GalleryComponent } from '@/lib/gallery/types'
+import Card from './neo-brutalism/card'
+import styled from 'styled-components'
 
 interface ComponentCardProps {
   component: GalleryComponent
   preview?: React.ReactNode
 }
 
+const PreviewSlot = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  .preview-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.9);
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md-1);
+    opacity: 0;
+    z-index: 20;
+    cursor: pointer;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  &:hover .copy-btn {
+    opacity: 1;
+  }
+
+  .copy-btn:hover {
+    transform: translate(1.5px, 1.5px);
+    box-shadow: var(--shadow-md-1);
+  }
+`
+
+const Meta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+
+  .tag {
+    padding: 0.3rem 0.65rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--color-accent-4);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-black);
+  }
+
+  .section {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-black);
+  }
+`
+
 export function ComponentCard({ component, preview }: ComponentCardProps) {
   const router = useRouter()
   const [copied, setCopied] = useState(false)
 
-  const componentKey = component.sectionId ? `${component.sectionId}/${component.slug}` : component.slug
+  const componentKey = component.sectionId
+    ? `${component.sectionId}/${component.slug}`
+    : component.slug
   const installCommand = `npx @explorers_111/byteui add ${componentKey}`
 
   const handleCopy = () => {
@@ -32,77 +101,50 @@ export function ComponentCard({ component, preview }: ComponentCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5 }}
-      className="group relative h-full"
+      className="h-full"
     >
-      <motion.div
-        className="h-full bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-colors cursor-pointer"
-        whileHover={{ y: -8 }}
+      <Card
+        fluid
+        title={component.name}
+        description={component.description}
         onClick={(e) => {
-          // Don't navigate if clicking on a button or link inside the preview
           const target = e.target as HTMLElement
           if (target.closest('a') || target.closest('button')) {
             return
           }
           router.push(href)
         }}
-      >
-        <div className="h-48 bg-gradient-to-br from-muted/50 to-muted flex items-center justify-center overflow-hidden relative">
-          {preview && (
-            <motion.div
-              initial={{ scale: 0.9 }}
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center justify-center w-full h-full"
-            >
-              {preview}
-            </motion.div>
-          )}
-        </div>
-
-        <div className="p-6">
-          <div className="mb-2 flex items-start justify-between gap-2">
-            <h3 className="font-bold text-lg leading-tight group-hover:text-primary transition-colors">
-              {component.name}
-            </h3>
-          </div>
-
-          <p className="text-sm text-foreground/60 mb-4 line-clamp-2">
-            {component.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2 mb-4">
+        footer={
+          <Meta>
             {component.tags.slice(0, 2).map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 rounded-full text-xs bg-primary/10 text-primary"
-              >
+              <span key={tag} className="tag">
                 {tag}
               </span>
             ))}
-          </div>
-
-          <span className="text-xs text-muted-foreground font-medium">
-            {component.sectionTitle}
-          </span>
-        </div>
-
-        <motion.button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            handleCopy()
-          }}
-          className="absolute top-4 right-4 p-2 rounded-lg bg-background/80 border border-border opacity-0 group-hover:opacity-100 transition-opacity z-20"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {copied ? (
-            <Check size={18} className="text-green-500" />
-          ) : (
-            <Copy size={18} className="text-foreground/70" />
-          )}
-        </motion.button>
-      </motion.div>
+            <span className="section">{component.sectionTitle}</span>
+          </Meta>
+        }
+      >
+        <PreviewSlot>
+          {preview && <div className="preview-inner">{preview}</div>}
+          <button
+            type="button"
+            className="copy-btn"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              handleCopy()
+            }}
+            aria-label="Copy install command"
+          >
+            {copied ? (
+              <Check size={18} className="text-green-600" />
+            ) : (
+              <Copy size={18} />
+            )}
+          </button>
+        </PreviewSlot>
+      </Card>
     </motion.div>
   )
 }

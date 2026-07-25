@@ -2,14 +2,17 @@ import React from 'react';
 import { styled } from 'styled-components';
 import NeoThemeWrapper from './neo.theme';
 
-const CheckBox: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => {
+const CheckBox: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  children,
+  ...props
+}) => {
   return (
     <StyledWrapper>
       <NeoThemeWrapper>
         <label className="checkbox-container">
           <input type="checkbox" className="checkbox" {...props} />
           <span className="custom-checkbox" />
-          <span className="label-text">{props.children}</span>
+          {children != null && <span className="label-text">{children}</span>}
         </label>
       </NeoThemeWrapper>
     </StyledWrapper>

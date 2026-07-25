@@ -7,50 +7,60 @@ import NeoThemeWrapper from './neo.theme';
 interface CardProps {
   className?: string;
   children?: React.ReactNode;
+
+  footer?: React.ReactNode;
   title?: string;
   description?: string;
-  image?: string; 
+  image?: string;
+  fluid?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const Card = ({
   className,
+  children,
+  footer,
   title = 'Summer',
   description = 'Watermelon Sugar Rush',
-  image
+  image,
+  fluid = false,
+  onClick,
 }: CardProps) => {
   return (
-    <StyledWrapper className={className}>
+    <StyledWrapper className={`${className ?? ''}${fluid ? ' fluid' : ''}`}>
       <NeoThemeWrapper>
-      <div className="card">
-        <div
-          className="card-image"
-          style={{
-            backgroundImage: image ? `url(${image})` : 'none',
-          }}
-        />
+        <div className="card" onClick={onClick} role={onClick ? 'button' : undefined}>
+          <div
+            className={`card-image${children ? ' has-children' : ''}`}
+            style={{
+              backgroundImage: !children && image ? `url(${image})` : 'none',
+            }}
+          >
+            {children}
+          </div>
 
-        <div className="category">{title}</div>
-        <div className="heading">{description}</div>
-      </div>
+          <div className="category">{title}</div>
+          <div className="heading">{description}</div>
+          {footer != null && <div className="footer">{footer}</div>}
+        </div>
 
-      {/* Decorative SVG */}
-      <div className="svg-wrapper">
-        <svg
-          width="200"
-          height="200"
-          viewBox="0 0 250 250"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M147.318 2.87012C162.248 -1.15111 174.135 1.54508 181.295 8.70508C188.455 15.8651 191.151 27.7519 187.13 42.6816C183.11 57.6081 172.388 75.4631 152.908 94.2812L152.164 95L152.908 95.7188C172.364 114.537 183.067 132.391 187.076 147.317C191.086 162.247 188.384 174.135 181.224 181.295C174.064 188.455 162.182 191.151 147.265 187.13C132.35 183.11 114.514 172.388 95.7197 152.908L95 152.163L94.2812 152.908C75.4631 172.388 57.6081 183.11 42.6816 187.13C27.7519 191.151 15.8651 188.455 8.70508 181.295C1.54508 174.135 -1.15111 162.248 2.87012 147.318C6.89046 132.392 17.6117 114.537 37.0918 95.7188L37.8359 95L37.0918 94.2812C17.6117 75.4631 6.89046 57.6081 2.87012 42.6816C-1.15111 27.7519 1.54508 15.8651 8.70508 8.70508C15.8651 1.54508 27.7519 -1.15111 42.6816 2.87012C57.6081 6.89046 75.4631 17.6117 94.2812 37.0918L95 37.8359L95.7188 37.0918C114.537 17.6117 132.392 6.89046 147.318 2.87012Z"
-            fill="#5294FF"
-            stroke="black"
-            strokeWidth="5"
-            strokeMiterlimit="10"
-          />
-        </svg>
-      </div>
+        <div className="svg-wrapper">
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 250 250"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M147.318 2.87012C162.248 -1.15111 174.135 1.54508 181.295 8.70508C188.455 15.8651 191.151 27.7519 187.13 42.6816C183.11 57.6081 172.388 75.4631 152.908 94.2812L152.164 95L152.908 95.7188C172.364 114.537 183.067 132.391 187.076 147.317C191.086 162.247 188.384 174.135 181.224 181.295C174.064 188.455 162.182 191.151 147.265 187.13C132.35 183.11 114.514 172.388 95.7197 152.908L95 152.163L94.2812 152.908C75.4631 172.388 57.6081 183.11 42.6816 187.13C27.7519 191.151 15.8651 188.455 8.70508 181.295C1.54508 174.135 -1.15111 162.248 2.87012 147.318C6.89046 132.392 17.6117 114.537 37.0918 95.7188L37.8359 95L37.0918 94.2812C17.6117 75.4631 6.89046 57.6081 2.87012 42.6816C-1.15111 27.7519 1.54508 15.8651 8.70508 8.70508C15.8651 1.54508 27.7519 -1.15111 42.6816 2.87012C57.6081 6.89046 75.4631 17.6117 94.2812 37.0918L95 37.8359L95.7188 37.0918C114.537 17.6117 132.392 6.89046 147.318 2.87012Z"
+              fill="#5294FF"
+              stroke="black"
+              strokeWidth="5"
+              strokeMiterlimit="10"
+            />
+          </svg>
+        </div>
       </NeoThemeWrapper>
     </StyledWrapper>
   );
@@ -60,6 +70,42 @@ const StyledWrapper = styled.div`
   position: relative;
   display: inline-block;
   width: auto;
+
+  &.fluid {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    .card {
+      width: 100%;
+      max-width: none;
+      min-width: 0;
+      height: 100%;
+      min-height: 408px;
+      background:rgb(167, 167, 167);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+      &:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 #1e1e1e;
+      }
+    }
+
+    .card-image {
+      height: 12rem;
+    }
+
+    .category {
+      text-transform: none;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-text-black);
+    }
+
+    .svg-wrapper {
+      display: none;
+    }
+  }
 
   .card {
     width: 100%;
@@ -72,6 +118,7 @@ const StyledWrapper = styled.div`
     box-shadow: var(--shadow-lg-1);
     position: relative;
     z-index: 2;
+    cursor: pointer;
   }
 
   .card-image {
@@ -79,10 +126,20 @@ const StyledWrapper = styled.div`
     width: 100%;
     height: 130px;
     border-radius: var(--border-radius);
+    border: var(--border-width) solid var(--border-color);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     transition: transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+
+    &.has-children {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-bg);
+    }
 
     &:hover {
       cursor: pointer;
@@ -105,9 +162,18 @@ const StyledWrapper = styled.div`
     color: var(--color-text-black);
     padding: 7px;
     font-family: var(--font-sans);
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     cursor: pointer;
     line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: auto;
+    height: 150px;
+  }
+
+  .footer {
+    padding: 0 7px 10px;
   }
 
   .svg-wrapper {

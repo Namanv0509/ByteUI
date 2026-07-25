@@ -30,7 +30,7 @@ const StyledTextArea = styled.textarea`
     transform: translate(1.5px, 1.5px);
   }
   &::placeholder {
-    color: var(--color-text-muted);
+    color: var(--color-text-black);
   }
 `;
 

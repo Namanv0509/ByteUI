@@ -4,10 +4,12 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { ComponentCard } from '@/components/component-card'
 import { GalleryComponentPreview } from '@/components/gallery/gallery-component-preview'
+import { PageShell } from '@/components/page-shell'
 import type { GallerySection } from '@/lib/gallery/types'
 import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { Search } from 'lucide-react'
+import TextArea from '@/components/neo-brutalism/text-area'
 
 type GalleryPageClientProps = {
   catalog: GallerySection[]
@@ -47,18 +49,18 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
   )
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageShell>
       <Navbar />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12 space-y-4"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Component Gallery</h1>
-          <p className="text-xl text-foreground/60">
-            Browse components from enabled design collections
+          <h1 className="page-title">Component Gallery</h1>
+          <p className="page-subtitle">
+            Browse components and add them with the CLI.
           </p>
         </motion.div>
 
@@ -68,16 +70,11 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
           transition={{ delay: 0.1 }}
           className="relative mb-8 max-w-2xl mx-auto"
         >
-          <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
-            size={20}
-          />
-          <input
-            type="text"
+          <TextArea
             placeholder="Search components..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary"
+            className='neo-input'
           />
         </motion.div>
 
@@ -90,11 +87,7 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
           <button
             type="button"
             onClick={() => setSelectedSectionId(null)}
-            className={`px-6 py-2 rounded-full font-semibold transition-all ${
-              selectedSectionId === null
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted text-foreground hover:bg-muted/80'
-            }`}
+            className={`neo-filter ${selectedSectionId === null ? 'active' : ''}`}
           >
             All
           </button>
@@ -103,11 +96,7 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
               key={section.id}
               type="button"
               onClick={() => setSelectedSectionId(section.id)}
-              className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                selectedSectionId === section.id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-muted text-foreground hover:bg-muted/80'
-              }`}
+              className={`neo-filter ${selectedSectionId === section.id ? 'active' : ''}`}
             >
               {section.title}
             </button>
@@ -120,11 +109,11 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-16"
+            className="text-center py-16 neo-panel p-8"
           >
-            <p className="text-lg text-foreground/60">
+            <p className="section-copy">
               No components found. Try adjusting your search or enable a section in{' '}
-              <code className="text-sm">lib/component-sections.ts</code>.
+              <code className="neo-chip">lib/component-sections.ts</code>.
             </p>
           </motion.div>
         ) : (
@@ -137,9 +126,9 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
               className="mb-20"
             >
               <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-2">{section.title}</h2>
+                <h2 className="section-title mb-2">{section.title}</h2>
                 {section.description && (
-                  <p className="text-foreground/60">{section.description}</p>
+                  <p className="section-copy">{section.description}</p>
                 )}
               </div>
 
@@ -166,6 +155,6 @@ export function GalleryPageClient({ catalog }: GalleryPageClientProps) {
       </section>
 
       <Footer />
-    </div>
+    </PageShell>
   )
 }

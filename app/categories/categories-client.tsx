@@ -4,6 +4,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { ComponentCard } from '@/components/component-card'
 import { GalleryComponentPreview } from '@/components/gallery/gallery-component-preview'
+import { PageShell } from '@/components/page-shell'
 import type { GallerySection } from '@/lib/gallery/types'
 import { motion } from 'framer-motion'
 
@@ -13,28 +14,27 @@ type CategoriesPageClientProps = {
 
 export function CategoriesPageClient({ catalog }: CategoriesPageClientProps) {
   return (
-    <div className="min-h-screen bg-background">
+    <PageShell>
       <Navbar />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12 space-y-4"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Component Collections</h1>
-          <p className="text-xl text-foreground/60">
-            Components grouped by design style — controlled in{' '}
-            <code className="text-sm">lib/component-sections.ts</code>
+          <h1 className="page-title">Collections</h1>
+          <p className="page-subtitle">
+            Components grouped by design style. Add any of them with the CLI.
           </p>
         </motion.div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {catalog.length === 0 ? (
-          <p className="text-center text-foreground/60">
+          <p className="text-center section-copy neo-panel p-8">
             No collections enabled. Turn on a section in{' '}
-            <code className="text-sm">lib/component-sections.ts</code>.
+            <code className="neo-chip">lib/component-sections.ts</code>.
           </p>
         ) : (
           catalog.map((section) => (
@@ -45,15 +45,15 @@ export function CategoriesPageClient({ catalog }: CategoriesPageClientProps) {
               viewport={{ once: true }}
               className="mb-20"
             >
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-2">{section.title}</h2>
+              <div className="mb-8 space-y-2">
+                <h2 className="section-title">{section.title}</h2>
                 {section.description && (
-                  <p className="text-foreground/60">{section.description}</p>
+                  <p className="section-copy">{section.description}</p>
                 )}
-                <p className="text-sm text-muted-foreground mt-2">
+                <span className="neo-tag inline-block">
                   {section.components.length} component
                   {section.components.length === 1 ? '' : 's'}
-                </p>
+                </span>
               </div>
 
               <motion.div
@@ -79,6 +79,6 @@ export function CategoriesPageClient({ catalog }: CategoriesPageClientProps) {
       </section>
 
       <Footer />
-    </div>
+    </PageShell>
   )
 }

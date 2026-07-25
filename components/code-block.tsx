@@ -6,14 +6,12 @@ import { motion } from 'framer-motion'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
-/** Matches preview panel `min-h-96` (24rem) plus a small peek below the fold */
 export const CODE_BLOCK_COLLAPSED_HEIGHT = 'calc(24rem + 0.5rem)'
 
 interface CodeBlockProps {
   code: string
   language?: string
   className?: string
-  /** When true, code starts collapsed to ~preview height and can be expanded */
   collapsible?: boolean
 }
 
