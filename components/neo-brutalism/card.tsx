@@ -169,7 +169,7 @@ const StyledWrapper = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: auto;
-    height: 150px;
+    height: 80px;
   }
 
   .footer {

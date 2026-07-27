@@ -10,16 +10,17 @@ const Shell = styled.div`
   color: var(--color-text-black);
 
   .page-title {
-    font-family: var(--font-lexend);
-    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-family: 'Mash', sans-serif;
     font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
     letter-spacing: -0.03em;
     line-height: 1.1;
     color: var(--color-text-black);
   }
 
   .page-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+    font-family: var(--font-lexend);
     line-height: 1.5;
     color: var(--color-text-black);
     max-width: 40rem;
@@ -36,14 +37,13 @@ const Shell = styled.div`
   }
 
   .section-copy {
-    font-size: 1.1rem;
-    line-height: 1.45;
+    font-size: 1.1rem; 
     color: var(--color-text-black);
     padding: 1rem;
   }
 
    .cta-doc {
-  color: var(--color-text-white);
+  color: var(--color-accent-4);
   }
 
   .neo-panel {

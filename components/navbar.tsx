@@ -56,7 +56,8 @@ const LogoContainer = styled(Link)`
   }
 
   .logo-title {
-    font-weight: bold;
+    font-family: 'Mash', sans-serif;
+    font-weight: 800;
     font-size: 1.4rem;
     letter-spacing: -0.025em;
     color: var(--color-text-black);

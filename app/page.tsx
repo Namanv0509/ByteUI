@@ -6,16 +6,18 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import NeoThemeWrapper from '@/components/neo-brutalism/neo.theme'
 import Button from '@/components/neo-brutalism/button'
-import Badge from '@/components/neo-brutalism/badge'
 import Card from '@/components/neo-brutalism/card'
 import CheckBox from '@/components/neo-brutalism/checkbox'
-import Slider from '@/components/neo-brutalism/slider'
-import styled from 'styled-components'
 import NeoBrutalismCalendar from '@/components/neo-brutalism/calendar'
 import ToolTip from '@/components/neo-brutalism/tool-tip'
-import SpringLoader from '@/components/neo-brutalism/spring-loader'
 import Toast from '@/components/neo-brutalism/toast'
 import { NPM_PACKAGE_URL } from '@/lib/links'
+import styled from 'styled-components'
+import CardImage from '@/public/image/Card.png'
+import CalendarImage from '@/public/image/Calender.png'
+import SliderImage from '@/public/image/Slider.png'
+import ButtonImage from '@/public/image/Button.png'
+import Image from 'next/image'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -47,18 +49,20 @@ const StyledWrapper = styled.div`
   }
 
   .hero-title {
-    font-family: var(--font-lexend);
-    font-size: clamp(3rem, 8vw, 4.75rem);
+    font-family: 'Mash', sans-serif;
     font-weight: 800;
+    font-size: clamp(3rem, 8vw, 4.75rem);
     letter-spacing: -0.03em;
     line-height: 1.05;
     color: var(--color-text-black);
   }
 
   .hero-copy {
-    font-size: 1.125rem;
+    font-family: var(--font-lexend);
+    font-size: 1.8rem;
     line-height: 1.5;
     color: var(--color-text-black);
+    font-weight: 400;
     max-width: 36rem;
     margin: 0 auto;
   }
@@ -123,21 +127,82 @@ const StyledWrapper = styled.div`
   }
 
   .cta-title {
-    font-family: var(--font-lexend);
+    font-family: 'Mash', sans-serif;
     font-size: clamp(2rem, 5vw, 2.75rem);
     font-weight: 800;
     color: var(--color-text-black);
   }
 
   .cta-copy {
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     color: var(--color-text-black);
+    font-family: var(--font-lexend);
     max-width: 28rem;
     margin: 0 auto;
   }
-  .section{
+  .section {
     margin-left: 15rem;
     }
+
+  .bg-sticker {
+    position: absolute;
+    pointer-events: none; 
+    user-select: none;
+    z-index: 0;           
+    height: auto;
+  }
+
+  .sticker-calendar {
+    top: 15%;
+    left: 9%;
+    width: 150px;
+    scale: 1.8;
+    transform: rotate(-12deg);
+  }
+
+  .sticker-card {
+    top: 8%;
+    right: 5%;
+    width: 130px;
+    scale: 1.7;
+    transform: rotate(10deg);
+  }
+
+  .sticker-card-2 {
+    top: 230%;
+    right: 5%;
+    width: 130px;
+    scale: 1.7;
+    transform: rotate(10deg);
+  }
+
+  .sticker-button {
+    bottom: 18%;
+    left: 3%;
+    width: 120px;
+    transform: rotate(8deg);
+  }
+
+  .sticker-slider {
+    bottom: 22%;
+    right: 4%;
+    width: 180px;
+    transform: rotate(12deg);
+  }
+
+  /* Scale down or hide stickers on tablet/mobile */
+  @media (max-width: 1024px) {
+    .bg-sticker {
+      opacity: 0.4;
+      transform: scale(0.7);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .bg-sticker {
+      display: none;
+    }
+  }
 `
 
 const CLI_COMMAND = 'npx @explorers_111/byteui add button'
@@ -151,6 +216,34 @@ export default function Home() {
           <Navbar />
 
           <section className="relative overflow-hidden">
+            <Image
+              src={CalendarImage}
+              alt=""
+              width={200}
+              height={200}
+              className="bg-sticker sticker-calendar"
+            />
+            <Image
+              src={CardImage}
+              alt=""
+              width={200}
+              height={200}
+              className="bg-sticker sticker-card"
+            />
+            <Image
+              src={SliderImage}
+              alt=""
+              width={200}
+              height={200}
+              className="bg-sticker sticker-slider"
+            />
+            <Image
+              src={ButtonImage}
+              alt=""
+              width={200}
+              height={200}
+              className="bg-sticker sticker-button"
+            />
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
               <motion.div
                 initial="hidden"
@@ -275,7 +368,7 @@ export default function Home() {
                     <Button variant="secondary">View Gallery</Button>
                   </Link>
                   <a href={NPM_PACKAGE_URL} target="_blank" rel="noopener noreferrer">
-                    <Button variant="primary">npm package</Button>
+                    <Button variant="cta">npm package</Button>
                   </a>
                 </div>
               </motion.div>

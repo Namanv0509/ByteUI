@@ -15,7 +15,7 @@ const FooterShell = styled.footer`
   color: var(--color-text-black);
 
   .brand-title {
-    font-family: var(--font-lexend);
+    font-family: 'Mash', sans-serif;
     font-weight: 800;
     font-size: 1.15rem;
   }

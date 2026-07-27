@@ -4,6 +4,31 @@
 @import "@fontsource/lexend/400.css";
 @import "@fontsource/public-sans";
 
+
+@font-face {
+  font-family: 'Mash';
+  src: url('../fonts/Mash-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mash';
+  src: url('../fonts/Mash-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mash';
+  src: url('../fonts/Mash-Ultrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
