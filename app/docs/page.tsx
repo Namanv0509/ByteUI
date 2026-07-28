@@ -14,14 +14,14 @@ const docSections = [
   {
     id: 'getting-started',
     title: 'Getting Started',
-    description: 'Install with the CLI, init your project, and add your first component.',
+    description: 'How to install and use ByteUI in your project',
     href: '/docs/getting-started',
     image: '/image/Abstract-1.svg',
   },
   {
     id: 'collections',
     title: 'Collections',
-    description: 'Browse design styles, theme tokens, and how collections are organized.',
+    description: 'Browse available collections (design styles) and tokens.',
     href: '/docs/collections',
     image: '/image/Eye.svg',
   },

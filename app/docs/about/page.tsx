@@ -12,89 +12,32 @@ export default function DocsPage() {
   const sections = [
     {
       id: 'installation',
-      title: 'Installation',
+      title: 'About ByteUI',
       content: `
         Package on npm: ${NPM_PACKAGE_NAME}
         ${NPM_PACKAGE_URL}
 
-        1. Initialize ByteUI in your project:
-           npx @explorers_111/byteui init
+        ByteUI is a open source UI Component library which can be installed via cli, we are starting from Neo-Brutalsim themed components.
+        We are providing full flexibility to the users to modify the components and theme tokens as per their requirements.
+        We will expand to other designs as well, it just the start. 
 
-        2. List available components:
-           npx @explorers_111/byteui list
-
-        3. Add a component:
-           npx @explorers_111/byteui add neo-brutalism/button
       `,
-    },
-    {
-      id: 'usage',
-      title: 'How to Use',
+    }, {
+      id: 'why another UI library?',
+      title: 'Why another UI library? ',
       content: `
-        1. Browse the Gallery to find a component
-        2. Copy the install command from the card or detail page
-        3. Run npx @explorers_111/byteui add <name>
-        4. Import the file from your components folder and use it
+        Neo-brutalism is one of the most expressive and creative design styles, yet developers have very few dedicated component libraries built around it. ByteUI fills that gap by offering reusable, customizable neo-brutalist components that let developers build distinctive interfaces quickly while staying flexible enough to match their own brand.
+        
       `,
-    },
-    {
-      id: 'collections',
-      title: 'Collections',
+    }, {
+      id: 'contact',
+      title: 'Contact',
       content: `
-        Components are grouped by design style in lib/component-sections.ts.
-
-        Neo Brutalism:
-        - Bold borders, hard shadows, high contrast
-        - Buttons, cards, forms, navigation, and more
-
-        Enable or hide collections by toggling enabled in that file.
+        If you have any feedback or would like custom components built and maintained for your project, feel free to contact me at namanverma00260@gmail.com .
       `,
     },
-    {
-      id: 'customization',
-      title: 'Customization',
-      content: `
-        Because code lands in your repo, edit freely.
 
-        Theme:
-        - Neo tokens live under [data-theme="neo"]
-        - Wrap UI with NeoThemeWrapper to apply the theme
-        - Change accent colors, borders, and shadows via CSS variables
 
-        Components:
-        - Adjust padding, radius, and copy in the component file
-        - Keep TypeScript props in sync when you extend behavior
-      `,
-    },
-    {
-      id: 'dependencies',
-      title: 'Dependencies',
-      content: `
-        Core:
-        - React 18+
-        - Next.js 13+ (for this docs site)
-        - Tailwind CSS 3+
-
-        Often installed by the CLI when needed:
-        - framer-motion
-        - styled-components
-        - lucide-react
-      `,
-    },
-    {
-      id: 'troubleshooting',
-      title: 'Troubleshooting',
-      content: `
-        Issue: Styles look unthemed
-        Solution: Wrap with NeoThemeWrapper or ensure data-theme="neo" is on a parent
-
-        Issue: Tailwind classes missing
-        Solution: Confirm Tailwind scans your components path
-
-        Issue: CLI cannot find a component
-        Solution: Run npx @explorers_111/byteui list and use the exact key
-      `,
-    },
   ]
 
   return (
@@ -175,6 +118,26 @@ export default function DocsPage() {
                         >
                           {trimmed}
                         </h3>
+                      )
+                    }
+                    if (trimmed.includes('@')) {
+                      return (
+                        <p key={i} className="section-copy leading-relaxed">
+                          {trimmed.split(/(\S+@\S+\.\S+)/).map((part, idx) => {
+                            const isEmail = /\S+@\S+\.\S+/.test(part)
+                            return isEmail ? (
+                              <a
+                                key={idx}
+                                href={`mailto:${part.replace(/\.$/, '')}`}
+                                className="font-bold underline underline-offset-2 hover:opacity-70"
+                              >
+                                {part.replace(/\.$/, '')}
+                              </a>
+                            ) : (
+                              part
+                            )
+                          })}
+                        </p>
                       )
                     }
                     if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {

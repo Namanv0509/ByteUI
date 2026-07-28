@@ -20,10 +20,15 @@ export default function DocsPage() {
         - Neo tokens live under [data-theme="neo"]
         - Wrap UI with NeoThemeWrapper to apply the theme
         - Change accent colors, borders, and shadows via CSS variables
+      `,
+    },
 
-        Components:
-        - Adjust padding, radius, and copy in the component file
-        - Keep TypeScript props in sync when you extend behavior
+    {
+      id: 'browse-components',
+      title: 'Browse Components',
+      content: `
+        To browse all components you can go to byte-ui.vercel.com/registry.json and there you can see all the available components.
+        and you can also use 'npx @explorers_111/byteui add <component-name>' to add components to your project.
       `,
     },
   
