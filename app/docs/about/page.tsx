@@ -7,6 +7,7 @@ import Button from '@/components/neo-brutalism/button'
 import { NPM_PACKAGE_NAME, NPM_PACKAGE_URL } from '@/lib/links'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import {ArrowLeft} from 'lucide-react'
 
 export default function DocsPage() {
   const sections = [
@@ -16,7 +17,6 @@ export default function DocsPage() {
       content: `
         Package on npm: ${NPM_PACKAGE_NAME}
         ${NPM_PACKAGE_URL}
-
         ByteUI is a open source UI Component library which can be installed via cli, we are starting from Neo-Brutalsim themed components.
         We are providing full flexibility to the users to modify the components and theme tokens as per their requirements.
         We will expand to other designs as well, it just the start. 
@@ -27,7 +27,6 @@ export default function DocsPage() {
       title: 'Why another UI library? ',
       content: `
         Neo-brutalism is one of the most expressive and creative design styles, yet developers have very few dedicated component libraries built around it. ByteUI fills that gap by offering reusable, customizable neo-brutalist components that let developers build distinctive interfaces quickly while staying flexible enough to match their own brand.
-        
       `,
     }, {
       id: 'contact',
@@ -45,6 +44,23 @@ export default function DocsPage() {
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mb-8 sticky top-10 "
+              >
+                <Link
+                  href="/docs"
+                  className="inline-flex items-center gap-2 font-bold hover:opacity-70"
+                  style={{ color: 'var(--color-text-black)' }}
+                >
+                  <ArrowLeft size={20} />
+                  Back to Doc
+                </Link>
+              </motion.div>
+
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,7 +72,7 @@ export default function DocsPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 " >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}

@@ -21,6 +21,10 @@ const NeoBrutalismCommandPalette = () => {
             placeholder="Type a command or search..."
             className="neo-input"
             autoFocus
+            autoCorrect='on'
+            autoSave='on'
+            autoComplete='on'
+            
           />
         </div>
         <CommandList className="neo-list">
@@ -65,7 +69,6 @@ const NeoBrutalismCommandPalette = () => {
 
 export default NeoBrutalismCommandPalette;
 
-/* ====================== STYLED COMPONENTS ====================== */
 
 const StyledWrapper = styled.div`
   .search{
@@ -90,9 +93,8 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
-    border-bottom: var(--border-width-thick) solid var(--border-color);
     padding: 10px 24px;
-    background: var(--color-accent-2);
+    
   }
 
   .neo-input {

@@ -7,6 +7,8 @@ import Button from '@/components/neo-brutalism/button'
 import { NPM_PACKAGE_NAME, NPM_PACKAGE_URL } from '@/lib/links'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import {ArrowLeft} from 'lucide-react';
+
 
 export default function DocsPage() {
   const sections = [
@@ -103,6 +105,22 @@ export default function DocsPage() {
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="mb-8 self-start sticky top-10"
+        >
+          <Link
+            href="/docs"
+            className="inline-flex items-center gap-2 font-bold hover:opacity-70"
+            style={{ color: 'var(--color-text-black)' }}
+          >
+            <ArrowLeft size={20} />
+            Back to Docs
+          </Link>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

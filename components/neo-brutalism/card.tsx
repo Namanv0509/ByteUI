@@ -4,10 +4,15 @@ import "@fontsource/lexend/400.css";
 import "@fontsource/public-sans";
 import NeoThemeWrapper from './neo.theme';
 
+type CardVariant = 'simple' | 'image' | 'text';
+
+
 interface CardProps {
   className?: string;
   children?: React.ReactNode;
-
+  variant?: CardVariant;
+  /** @deprecated use `variant` */
+  varient?: CardVariant;
   footer?: React.ReactNode;
   title?: string;
   description?: string;
@@ -19,6 +24,7 @@ interface CardProps {
 const Card = ({
   className,
   children,
+  variant = 'image',
   footer,
   title = 'Summer',
   description = 'Watermelon Sugar Rush',
@@ -26,41 +32,52 @@ const Card = ({
   fluid = false,
   onClick,
 }: CardProps) => {
+  const resolvedVariant: CardVariant =
+    variant ?? (children || image ? 'image' : 'simple');
+  const showVisual = resolvedVariant === 'image';
+  const showSvg = !fluid && resolvedVariant !== 'text';
+
   return (
-    <StyledWrapper className={`${className ?? ''}${fluid ? ' fluid' : ''}`}>
+    <StyledWrapper
+      className={`${className ?? ''}${fluid ? ' fluid' : ''} variant-${resolvedVariant}`}
+    >
       <NeoThemeWrapper>
         <div className="card" onClick={onClick} role={onClick ? 'button' : undefined}>
-          <div
-            className={`card-image${children ? ' has-children' : ''}`}
-            style={{
-              backgroundImage: !children && image ? `url(${image})` : 'none',
-            }}
-          >
-            {children}
-          </div>
+          {showVisual && (
+            <div
+              className={`card-image${children ? ' has-children' : ''}`}
+              style={{
+                backgroundImage: !children && image ? `url(${image})` : 'none',
+              }}
+            >
+              {children}
+            </div>
+          )}
 
           <div className="category">{title}</div>
           <div className="heading">{description}</div>
           {footer != null && <div className="footer">{footer}</div>}
         </div>
 
-        <div className="svg-wrapper">
-          <svg
-            width="200"
-            height="200"
-            viewBox="0 0 250 250"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M147.318 2.87012C162.248 -1.15111 174.135 1.54508 181.295 8.70508C188.455 15.8651 191.151 27.7519 187.13 42.6816C183.11 57.6081 172.388 75.4631 152.908 94.2812L152.164 95L152.908 95.7188C172.364 114.537 183.067 132.391 187.076 147.317C191.086 162.247 188.384 174.135 181.224 181.295C174.064 188.455 162.182 191.151 147.265 187.13C132.35 183.11 114.514 172.388 95.7197 152.908L95 152.163L94.2812 152.908C75.4631 172.388 57.6081 183.11 42.6816 187.13C27.7519 191.151 15.8651 188.455 8.70508 181.295C1.54508 174.135 -1.15111 162.248 2.87012 147.318C6.89046 132.392 17.6117 114.537 37.0918 95.7188L37.8359 95L37.0918 94.2812C17.6117 75.4631 6.89046 57.6081 2.87012 42.6816C-1.15111 27.7519 1.54508 15.8651 8.70508 8.70508C15.8651 1.54508 27.7519 -1.15111 42.6816 2.87012C57.6081 6.89046 75.4631 17.6117 94.2812 37.0918L95 37.8359L95.7188 37.0918C114.537 17.6117 132.392 6.89046 147.318 2.87012Z"
-              fill="#5294FF"
-              stroke="black"
-              strokeWidth="5"
-              strokeMiterlimit="10"
-            />
-          </svg>
-        </div>
+        {showSvg && (
+          <div className="svg-wrapper">
+            <svg
+              width="200"
+              height="200"
+              viewBox="0 0 250 250"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M147.318 2.87012C162.248 -1.15111 174.135 1.54508 181.295 8.70508C188.455 15.8651 191.151 27.7519 187.13 42.6816C183.11 57.6081 172.388 75.4631 152.908 94.2812L152.164 95L152.908 95.7188C172.364 114.537 183.067 132.391 187.076 147.317C191.086 162.247 188.384 174.135 181.224 181.295C174.064 188.455 162.182 191.151 147.265 187.13C132.35 183.11 114.514 172.388 95.7197 152.908L95 152.163L94.2812 152.908C75.4631 172.388 57.6081 183.11 42.6816 187.13C27.7519 191.151 15.8651 188.455 8.70508 181.295C1.54508 174.135 -1.15111 162.248 2.87012 147.318C6.89046 132.392 17.6117 114.537 37.0918 95.7188L37.8359 95L37.0918 94.2812C17.6117 75.4631 6.89046 57.6081 2.87012 42.6816C-1.15111 27.7519 1.54508 15.8651 8.70508 8.70508C15.8651 1.54508 27.7519 -1.15111 42.6816 2.87012C57.6081 6.89046 75.4631 17.6117 94.2812 37.0918L95 37.8359L95.7188 37.0918C114.537 17.6117 132.392 6.89046 147.318 2.87012Z"
+                fill="#5294FF"
+                stroke="black"
+                strokeWidth="5"
+                strokeMiterlimit="10"
+              />
+            </svg>
+          </div>
+        )}
       </NeoThemeWrapper>
     </StyledWrapper>
   );
@@ -104,6 +121,50 @@ const StyledWrapper = styled.div`
 
     .svg-wrapper {
       display: none;
+    }
+  }
+
+  &.variant-simple {
+    .card {
+      max-width: 280px;
+    }
+
+    .card-image {
+      display: none;
+    }
+
+    .category {
+      text-transform: none;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-text-black);
+      padding-top: 12px;
+    }
+  }
+
+  &.variant-text {
+    .card {
+      max-width: 320px;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-md-1);
+    }
+
+    .card-image {
+      display: none;
+    }
+
+    .category {
+      text-transform: none;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--color-text-black);
+      padding-top: 12px;
+    }
+
+    .heading {
+      height: auto;
+      overflow: visible;
+      -webkit-line-clamp: unset;
     }
   }
 

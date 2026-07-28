@@ -71,7 +71,7 @@ const Shell = styled.div`
 
   .neo-input {
     width: 100%;
-    padding: 0.85rem 1rem 0.85rem 3rem;
+    padding: 0.85rem 1rem 0.2rem 1rem;
     border: var(--border-width) solid var(--border-color);
     box-shadow: var(--shadow-md-4);
     font-size: 1.05rem;
