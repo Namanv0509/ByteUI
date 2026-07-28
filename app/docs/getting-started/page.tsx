@@ -107,21 +107,6 @@ export default function DocsPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-8 self-start sticky top-10"
-        >
-          <Link
-            href="/docs"
-            className="inline-flex items-center gap-2 font-bold hover:opacity-70"
-            style={{ color: 'var(--color-text-black)' }}
-          >
-            <ArrowLeft size={20} />
-            Back to Docs
-          </Link>
-        </motion.div>
-
-        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-14 space-y-4"
@@ -132,25 +117,44 @@ export default function DocsPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="hidden lg:block"
-          >
-            <div className="sticky top-24 neo-panel p-3 space-y-1">
-              {sections.map((section) => (
-                <a
-                  key={section.id}
-                  href={`#${section.id}`}
-                  className="neo-sidebar-link"
-                >
-                  {section.title}
-                </a>
-              ))}
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
+          
+          <div className="space-y-6 lg:sticky lg:top-10 lg:self-start">
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mb-4"
+            >
+              <Link
+                href="/docs"
+                className="inline-flex items-center gap-2 font-bold hover:opacity-70"
+                style={{ color: 'var(--color-text-black)' }}
+              >
+                <ArrowLeft size={20} />
+                Back to Docs
+              </Link>
+            </motion.div>
 
+            {/* The Navigation Links */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="hidden lg:block"
+            >
+              <div className="neo-panel p-3 space-y-1">
+                {sections.map((section) => (
+                  <a
+                    key={section.id}
+                    href={`#${section.id}`}
+                    className="neo-sidebar-link"
+                  >
+                    {section.title}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -247,7 +251,6 @@ export default function DocsPage() {
           </div>
         </motion.div>
       </div>
-
       <Footer />
     </PageShell>
   )
