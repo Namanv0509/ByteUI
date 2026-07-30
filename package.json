@@ -1,15 +1,39 @@
 {
-  "name": "byteui",
+  "name": "@explorers_111/byteui",
   "version": "0.1.0",
-  "private": true,
+  "description": "Neo-brutalist and modern React & Next.js component library with CLI copy-paste and export support.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Namanv0509/ByteUI.git"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "components",
+    "neo-brutalism",
+    "ui-library",
+    "styled-components",
+    "tailwind",
+    "storybook",
+    "design-system"
+  ],
+  "author": "ByteUI Team",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Namanv0509/ByteUI/issues"
+  },
+  "homepage": "https://github.com/Namanv0509/ByteUI#readme",
   "scripts": {
     "dev": "next dev",
     "build-registry": "node scripts/build-registry.js",
     "build": "npm run build-registry && next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
     "test:watch": "jest --watch",
     "bundle": "webpack --config webpack.config.js",
     "storybook": "storybook dev -p 6006",
@@ -20,6 +44,9 @@
   },
   "files": [
     "cli/bin",
+    "components",
+    "hooks",
+    "lib",
     "dist"
   ],
   "dependencies": {
@@ -89,6 +116,7 @@
     "@storybook/addon-styling-webpack": "^3.0.2",
     "@storybook/nextjs-vite": "^10.5.4",
     "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",

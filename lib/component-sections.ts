@@ -27,7 +27,7 @@ export const componentSections: ComponentSection[] = [
   {
     id: 'old-component',
     title: 'Old Components',
-    enabled: true,
+    enabled: false,
     description: 'Legacy components (hidden until ready)',
   },
   {

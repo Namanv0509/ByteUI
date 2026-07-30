@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Moon, Sun } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+// import { Moon, Sun } from 'lucide-react'
+// import { useTheme } from 'next-themes'
+// import { useEffect, useState } from 'react'
+// import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import NeoThemeWrapper from './neo-brutalism/neo.theme'
 
@@ -14,11 +14,11 @@ const NavbarWrapper = styled.div`
   top: 0;
   z-index: 50;
   width: 100%;
-  max-width: 60rem;
+  max-width: 50rem;
   rotate: -2deg;
   margin: 0 auto;
-  margin-top: 2rem;
-  padding: 1.5rem 1rem 0.5rem 1rem;
+  margin-top: 0rem;
+  padding: 3.5rem 1rem 0.5rem 1rem;
 `
 
 const StyledNavbar = styled.nav`
@@ -93,44 +93,47 @@ const NavLinkItem = styled(Link)`
 
 `
 
-const ThemeButton = styled(motion.button)`
-  background-color: var(--color-bg);
-  height: 2.5rem;
-  min-width: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-weight: 700;
-  border: var(--border-width) solid var(--border-color);
-  box-shadow: var(--shadow-md-1);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  border-radius: var(--border-radius);
+// const ThemeButton = styled(motion.button)`
+//   background-color: var(--color-bg);
+//   height: 2.5rem;
+//   min-width: 2.5rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-shrink: 0;
+//   font-weight: 700;
+//   border: var(--border-width) solid var(--border-color);
+//   box-shadow: var(--shadow-md-1);
+//   cursor: pointer;
+//   transition: all 0.15s ease;
+//   border-radius: var(--border-radius);
 
-  &:hover {
-    opacity: 0.9;
-  }
+//   &:hover {
+//     opacity: 0.9;
+//   }
 
-  &:active {
-    transform: translate(2px, 2px);
-    box-shadow: none;
-  }
-`
+//   &:active {
+//     transform: translate(2px, 2px);
+//     box-shadow: none;
+//   }
+// `
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  // const { theme, setTheme } = useTheme()
+  // const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  // useEffect(() => {
+  //   setMounted(true)
+  // }, [])
 
   const navItems = [
     { label: 'Gallery', href: '/gallery' },
     { label: 'Categories', href: '/categories' },
     { label: 'Docs', href: '/docs' },
   ]
+
+  const localDate = new Date();
+  console.log(localDate.toString());
 
   return (<NeoThemeWrapper>
     <NavbarWrapper>
@@ -159,7 +162,7 @@ export function Navbar() {
         </NavLinks>
 
         {/* Theme Toggle */}
-        {mounted && (
+       {/* {mounted && (
           <ThemeButton
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             whileTap={{ scale: 0.95 }}
@@ -172,7 +175,7 @@ export function Navbar() {
             )}
           </ThemeButton>
         )}
-      </StyledNavbar>
+             */}      </StyledNavbar>
     </NavbarWrapper>
     </NeoThemeWrapper>
   )

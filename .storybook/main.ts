@@ -12,7 +12,10 @@ const config: StorybookConfig = {
   })),
 
   addons: [],
-  framework: '@storybook/nextjs-vite',
+  framework:{ name: '@storybook/nextjs-vite',
+    options: {},
+
+  },
   staticDirs: ['../public'],
 }
 

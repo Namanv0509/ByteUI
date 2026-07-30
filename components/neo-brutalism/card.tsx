@@ -17,6 +17,7 @@ interface CardProps {
   title?: string;
   description?: string;
   image?: string;
+  imageURL?: string;
   fluid?: boolean;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
