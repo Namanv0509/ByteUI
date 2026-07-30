@@ -114,7 +114,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@storybook/addon-styling-webpack": "^3.0.2",
-    "@storybook/nextjs-vite": "^10.5.4",
+    "@storybook/nextjs-vite": "^10.5.5",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.9.1",
