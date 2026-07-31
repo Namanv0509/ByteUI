@@ -153,4 +153,4 @@ We welcome community contributions! Please read our [CONTRIBUTING.md](CONTRIBUTI
 
 ## License
 
-[MIT](LICENSE) © ByteUI Team
+[MIT](LICENSE) © ByteUI

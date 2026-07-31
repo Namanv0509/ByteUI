@@ -2,10 +2,8 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-// import { Moon, Sun } from 'lucide-react'
-// import { useTheme } from 'next-themes'
-// import { useEffect, useState } from 'react'
-// import { motion } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import NeoThemeWrapper from './neo-brutalism/neo.theme'
 
@@ -19,6 +17,11 @@ const NavbarWrapper = styled.div`
   margin: 0 auto;
   margin-top: 0rem;
   padding: 3.5rem 1rem 0.5rem 1rem;
+
+  @media (max-width: 768px) {
+    rotate: 0deg;
+    padding: 1.5rem 1rem 0.5rem 1rem;
+  }
 `
 
 const StyledNavbar = styled.nav`
@@ -66,16 +69,15 @@ const LogoContainer = styled(Link)`
 `
 
 const NavLinks = styled.div`
-  display: flex;
+  display: none;
   align-items: center;
   gap: 5rem;
   flex: 1;
   justify-content: center;
 
-
   @media (min-width: 768px) {
+    display: flex;
     gap: 6rem;
-
   }
 `
 
@@ -90,7 +92,63 @@ const NavLinkItem = styled(Link)`
   &:hover {
     opacity: 0.7;
   }
+`
 
+const MobileMenuButton = styled.button`
+  display: none;
+  background: var(--color-accent-4);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md-1);
+  transition: all 0.15s ease;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+`
+
+const MobileNavLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-accent-2);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg-1);
+  padding: 1.5rem;
+  gap: 1.25rem;
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  right: 1rem;
+  margin-top: 0.5rem;
+  z-index: 100;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+const MobileNavLinkItem = styled(NavLinkItem)`
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.15);
+
+  &:last-child {
+    border-bottom: none;
+  }
 `
 
 // const ThemeButton = styled(motion.button)`
@@ -119,12 +177,7 @@ const NavLinkItem = styled(Link)`
 // `
 
 export function Navbar() {
-  // const { theme, setTheme } = useTheme()
-  // const [mounted, setMounted] = useState(false)
-
-  // useEffect(() => {
-  //   setMounted(true)
-  // }, [])
+  const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
     { label: 'Gallery', href: '/gallery' },
@@ -132,51 +185,54 @@ export function Navbar() {
     { label: 'Docs', href: '/docs' },
   ]
 
-  const localDate = new Date();
-  console.log(localDate.toString());
+  return (
+    <NeoThemeWrapper>
+      <NavbarWrapper>
+        <StyledNavbar>
+          {/* Logo */}
+          <LogoContainer href="/">
+            <div className="logo-badge">
+              <Image
+                src="/android-chrome-192x192.png"
+                alt="ByteUI Logo"
+                width={24}
+                height={24}
+                className="rounded-full"
+              />
+            </div>
+            <span className="logo-title">ByteUI</span>
+          </LogoContainer>
 
-  return (<NeoThemeWrapper>
-    <NavbarWrapper>
-      <StyledNavbar>
-        {/* Logo */}
-        <LogoContainer href="/">
-          <div className="logo-badge">
-            <Image
-              src="/android-chrome-192x192.png"
-              alt="ByteUI Logo"
-              width={24}
-              height={24}
-              className="rounded-full"
-            />
-          </div>
-          <span className="logo-title">ByteUI</span>
-        </LogoContainer>
+          {/* Nav Items */}
+          <NavLinks>
+            {navItems.map((item) => (
+              <NavLinkItem key={item.href} href={item.href}>
+                {item.label}
+              </NavLinkItem>
+            ))}
+          </NavLinks>
 
-        {/* Nav Items */}
-        <NavLinks>
-          {navItems.map((item) => (
-            <NavLinkItem key={item.href} href={item.href}>
-              {item.label}
-            </NavLinkItem>
-          ))}
-        </NavLinks>
+          {/* Hamburger Menu Button */}
+          <MobileMenuButton onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </MobileMenuButton>
+        </StyledNavbar>
 
-        {/* Theme Toggle */}
-       {/* {mounted && (
-          <ThemeButton
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Toggle Theme"
-          >
-            {theme === 'dark' ? (
-              <Sun size={20} className="text-yellow-400" />
-            ) : (
-              <Moon size={20} className="text-black" />
-            )}
-          </ThemeButton>
+        {/* Mobile Nav Links Dropdown */}
+        {isOpen && (
+          <MobileNavLinks>
+            {navItems.map((item) => (
+              <MobileNavLinkItem
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </MobileNavLinkItem>
+            ))}
+          </MobileNavLinks>
         )}
-             */}      </StyledNavbar>
-    </NavbarWrapper>
+      </NavbarWrapper>
     </NeoThemeWrapper>
   )
 }

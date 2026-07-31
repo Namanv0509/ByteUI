@@ -52,9 +52,12 @@ const Shell = styled.div`
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg-5);
     padding: 0.8rem;
-    margin-left: 40px;
+    margin-left: 0;
     margin-top: 10px;
 
+    @media (min-width: 768px) {
+      margin-left: 40px;
+    }
   }
 
   .neo-chip {
@@ -165,8 +168,12 @@ const Shell = styled.div`
 
   .neo-panel-mint {
     background: var(--color-accent-2);
-    margin-left: 40px;
+    margin-left: 0;
     padding: 20px;
+
+    @media (min-width: 768px) {
+      margin-left: 40px;
+    }
   }
 
   .detail-title {

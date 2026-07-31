@@ -106,8 +106,10 @@ const StyledWrapper = styled.div`
     border: var(--border-width) solid var(--border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg-5);
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     margin-right: 0rem;
+    box-sizing: border-box;
   }
 
   .examples-label {
@@ -141,8 +143,10 @@ const StyledWrapper = styled.div`
     margin: 0 auto;
   }
   .section {
-    margin-left: 15rem;
+    @media (min-width: 1024px) {
+      margin-left: 15rem;
     }
+  }
 
   .bg-sticker {
     position: absolute;
