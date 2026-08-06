@@ -100,7 +100,7 @@ const StyledWrapper = styled.div`
       min-width: 0;
       height: 100%;
       min-height: 408px;
-      background:rgb(167, 167, 167);
+      background:var(--color-accent-11);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
 
       &:hover {

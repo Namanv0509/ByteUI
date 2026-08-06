@@ -4,12 +4,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import NeoThemeWrapper from '@/components/neo-brutalism/neo.theme'
+import { FaGithub , FaNpm } from 'react-icons/fa';
 import styled from 'styled-components'
 import { NPM_PACKAGE_NAME, NPM_PACKAGE_URL } from '@/lib/links'
 
 const FooterShell = styled.footer`
   margin-top: 4rem;
   padding: 2.5rem 0;
+  position: relative;
+  display: flex;
   border-top: var(--border-width) solid var(--border-color);
   font-family: var(--font-sans);
   color: var(--color-text-black);
@@ -43,6 +46,17 @@ const FooterShell = styled.footer`
       opacity: 0.7;
     }
   }
+  .social {
+    display: flex;
+    position: relative;
+    margin-left: 60rem;
+    padding: 2px;
+    align-items: center;
+  }
+  .logo {
+    margin: 30px;
+    position: relative;
+  }
 
   .npm-link {
     color: var(--color-text-black);
@@ -53,6 +67,16 @@ const FooterShell = styled.footer`
 
     &:hover {
       opacity: 0.7;
+    }
+  }
+
+    @media (max-width: 62rem) {
+    .social {
+       margin-left: 10rem;
+       align-items: center;
+       right: 25%;
+       margin-bottom: 10px;
+       margin-top: 0px;
     }
   }
 `
@@ -69,6 +93,20 @@ export function Footer() {
     <NeoThemeWrapper>
       <FooterShell>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className='social'
+            >
+                  <Link href="https://github.com/Namanv0509/ByteUI" className="link">
+                    <FaGithub className="inline-block mr-2 scale-200 logo" />
+                  </Link>
+                  <Link href="https://www.npmjs.com/package/@explorers_111/byteui" className="link">
+                    <FaNpm className="inline-block mr-2 scale-400 logo" />
+                  </Link>
+
+            </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <motion.div
               initial={{ opacity: 0 }}

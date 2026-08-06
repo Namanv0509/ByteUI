@@ -100,6 +100,8 @@ const StyledWrapper = styled.div`
   }
 
   .examples-panel {
+    display: flex;
+    flex-direction: column;
     margin-top: 2.5rem;
     padding: 1.75rem;
     background: var(--color-accent-4);
@@ -107,8 +109,8 @@ const StyledWrapper = styled.div`
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg-5);
     width: 100%;
-    max-width: 1000px;
-    margin-right: 0rem;
+    min-width: 60rem;
+    margin-left: -4rem;
     box-sizing: border-box;
   }
 
@@ -195,14 +197,18 @@ const StyledWrapper = styled.div`
   }
 
   /* Scale down or hide stickers on tablet/mobile */
-  @media (max-width: 1024px) {
+  @media (max-width: 62rem) {
     .bg-sticker {
       opacity: 0.4;
       transform: scale(0.7);
     }
   }
-
-  @media (max-width: 640px) {
+  @media (max-width: 62rem) {
+    .examples-panel {
+        display:none;
+    }
+  }
+  @media (max-width: 62rem) {
     .bg-sticker {
       display: none;
     }
