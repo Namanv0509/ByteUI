@@ -1,7 +1,9 @@
-# ByteUI ⚡
+# ByteUI
 
 ByteUI is a modern, high-performance component library featuring **Neo-Brutalist** and modern UI styles designed for **React** and **Next.js** applications.
 
+
+[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/ComradeAERGO/Awesome-Neobrutalism#components-libraries)
 [![npm version](https://img.shields.io/npm/v/@explorers_111/byteui?color=f76a9b&style=flat-square)](https://www.npmjs.com/package/@explorers_111/byteui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Storybook](https://img.shields.io/badge/Storybook-Interactive%20Docs-FF4785?style=flat-square&logo=storybook)](https://storybook.js.org)
